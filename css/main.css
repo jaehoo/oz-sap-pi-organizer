@@ -1,0 +1,38 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+#MeteorToolBar{
+
+    display: inline-block;
+    min-width: 40%;
+    padding: 0px;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0px 0px 2px  #999;
+
+}
+
+
+#toolBox{
+    border: none;
+    padding: 10px;
+    font-style: italic;
+    font: 14px/20px Consolas, Monaco, Monospaced, monospace;
+    color: #555;
+}
+
+
+
+
+
+
+
+
+
+
+
+
