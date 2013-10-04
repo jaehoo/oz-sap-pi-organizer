@@ -97,10 +97,88 @@ function getData() {
             thatIMight: 1,
             needLater: true
         }
+
     };
+
+
+    var filesrc="js/data.json";
+
+    console.info('GET JSON DATA');
+
+    var jqxhr = $.getJSON( filesrc, function(data) {
+        console.log( "success" );
+    })
+        .done(function() {
+            console.log( "second success" );
+        })
+        .fail(function() {
+            console.log( "error" );
+        })
+        .always(function() {
+            console.log( "complete" );
+        });
+
+//    $.ajax({
+//        dataType: "json",
+//        url: filesrc,
+//        data: data,
+//
+//    });
+//    alert(data.len);
+//
+//    $.getJSON(filesrc, function(data){
+//        // I have placed alert here previously and realized it doesn't go into here
+//        console.info(data.length);
+//        $.each(data.streetCity, function(i,s){
+//            console.info(s);
+//        });
+//    });
+
+//    $.getJSON('~/Content/NBCCJr.json', function (data) {
+//        $.each(data, function(i, dataPoint) {
+//            // Bla
+//        });
+//    });
+
+
+    var data = {
+        cols: {
+            id: {
+                index: 1,
+                friendly: "ID / RICEF",
+                type: "String"
+            },
+            track: {
+                index: 2,
+                friendly: "Track",
+                type: "string"
+            },
+            interfaceType: {
+                index: 3,
+                friendly: "Sync / Async",
+                type: "string"
+            }
+        },
+        rows: [
+            {
+                userId: 1,
+                interfaceType: "Async",
+                track: "Mercaderias"
+            },
+            {
+                userId: 2,
+                interfaceType: "Sync",
+                track: {a:'aw', b:'aaaa'}
+                //track: "Mercaderias"
+            }
+        ]
+    }
+
 
     return data;
 }
+
+
 
 //Helper function to generate names
 function elfName() {
