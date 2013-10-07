@@ -1,0 +1,85 @@
+{
+    "cols": [
+        {
+            "id": {
+                "index": 1,
+                "friendly": "ID",
+                "type": "string",
+                "placeHolder": "Self explained",
+                "tooltip": "=P",
+                "filterTooltip": "¬¬"
+            },
+            "aris": {
+                "index": 2,
+                "friendly": "ID ARIS",
+                "type": "string",
+                "placeholder": false,
+                "filterTooltip": false
+            },
+            "track": {
+                "index": 2,
+                "friendly": "Track",
+                "type": "string"
+            },
+            "mode": {
+                "index": 3,
+                "friendly": "Sync or Async",
+                "type": "string"
+            },
+            "sysSender": {
+                "index": 4,
+                "friendly": "Sys Sender",
+                "type": "string"
+            },
+            "sysReceiver": {
+                "index": 5,
+                "friendly": "Sys Receiver",
+                "type": "string"
+            },
+            "adapSender": {
+                "index": 6,
+                "friendly": "Used Adapter Sender",
+                "type": "string"
+            },
+            "adapReceiver": {
+                "index": 7,
+                "friendly": "Used Adapter Receiver",
+                "type": "string"
+            },
+
+            "senderContact": {
+                "index": 10,
+                "friendly": "Responsable Origen",
+                "type": "string"
+            },
+            "receiverContact": {
+                "index": 11,
+                "friendly": "Responsable Destino",
+                "type": "string"
+            }
+        },
+        {
+            "id": {
+                "index": 1,
+                "friendly": "ID",
+                "type": "string",
+                "placeHolder": "Self explained",
+                "tooltip": "=P",
+                "filterTooltip": "¬¬"
+            },
+            "aris": {
+                "index": 2,
+                "friendly": "ID ARIS",
+                "type": "string",
+                "placeholder": false,
+                "filterTooltip": false
+            },
+            "track": {
+                "index": 2,
+                "friendly": "Track",
+                "type": "string"
+            }
+
+        }
+    ]
+}

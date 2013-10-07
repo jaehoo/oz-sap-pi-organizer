@@ -73,20 +73,65 @@
 <div class="jumbotron">
     <div class="container">
 
+        <img src="img/favicon-big.png" style="width: 50px;" class="img-vendor"/>
+        <img src="img/SAP-Logo.png" style="width: 98px;" class="img-vendor"/>
+
+
         <div id="MeteorToolBar">
             <input id="toolBox" type="text" placeholder="Search By..."/>
 
-
+            <ul class="mt-menu">
+                <li>
+                    <i id="btnDynTable" class="icon-list"></i>
+                </li>
+            </ul>
         </div>
 
-        <h2>WATable</h2>
-
-        <div id="div1" style="width:300px"></div>
 
 
+        <div id="tabContainer">
+            <div class="tabs">
 
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <!--<ul>-->
+                    <!--<li id="tabHeader_1">Simple</li>-->
+                    <!--<li id="tabHeader_2">Advanced</li>-->
+                    <!--<li id="tabHeader_3">Page 3</li>-->
+                <!--</ul>-->
+            </div>
+            <div class="tabscontent">
+
+                <div class="tabContentMenu">
+                    <a id='btnBuild' class="btnAdvanced btn btn-default">Summary</a>
+                    <a id='testAnimate' class="btn btn-default btnAdvanced">animate</a>
+
+                </div>
+
+
+
+                <div class="tabpage" id="tabpage_1">
+
+
+
+                    <div id="dynTable"></div>
+
+                </div>
+                <div class="tabpage" id="tabpage_2">
+                    <h2>Page 2</h2>
+                    <p>Pellentesque habitant morbi tristique senectus...</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!--<h1>Hello, world!</h1>-->
+        <!--<p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>-->
         <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
 </div>
@@ -114,7 +159,7 @@
     <hr>
 
     <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; Orbital Zero 2013</p>
     </footer>
 </div> <!-- /container -->
 
@@ -130,111 +175,102 @@
 
 <script src="js/jquery.watable.js" type="text/javascript" charset="utf-8"></script>
 
+<script src="js/vendor/jquery-ui-1.8.16.custom.min.js"></script>
+
 <script type="text/javascript">
-    $(document).ready( function() {
 
-        //An example with all options.
-        var waTable = $('#div1').WATable({
-            pageSize: 8,                //Sets the initial pagesize
-            filter: true,               //Show filter fields
-            columnPicker: true,         //Show the columnPicker button
-            pageSizes: [1,5,8,12,200],  //Set custom pageSizes. Leave empty array to hide button.
-            hidePagerOnEmpty: true,     //Removes the pager if data is empty.
-            checkboxes: true,           //Make rows checkable. (Note. You need a column with the 'unique' property)
-            preFill: true,              //Initially fills the table with empty rows (as many as the pagesize).
-            //url: '/someWebservice'    //Url to a webservice if not setting data manually as we do in this example
-            //urlData: { report:1 }     //Any data you need to pass to the webservice
-            //urlPost: true             //Use POST httpmethod to webservice. Default is GET.
-            types: {                    //Following are some specific properties related to the data types
-                string: {
-                    //filterTooltip: "Giggedi..."    //What to say in tooltip when hoovering filter fields. Set false to remove.
-                    //placeHolder: "Type here..."    //What to say in placeholder filter fields. Set false for empty.
-                },
-                number: {
-                    decimals: 1   //Sets decimal precision for float types
-                },
-                bool: {
-                    //filterTooltip: false
-                },
-                date: {
-                    utc: true,            //Show time as universal time, ie without timezones.
-                    //format: 'yy/dd/MM',   //The format. See all possible formats here http://arshaw.com/xdate/#Formatting.
-                    datePicker: true      //Requires "Datepicker for Bootstrap" plugin (http://www.eyecon.ro/bootstrap-datepicker).
-                }
-            },
-            actions: {                //This generates a button where you can add elements.
-                filter: true,         //If true, the filter fields can be toggled visible and hidden.
-                columnPicker: true,   //if true, the columnPicker can be toggled visible and hidden.
-                custom: [             //Add any other elements here. Here is a refresh and export example.
-                    $('<a href="#" class="refresh"><i class="icon-refresh"></i>&nbsp;Refresh</a>'),
-                    $('<a href="#" class="export_all"><i class="icon-share"></i>&nbsp;Export all rows</a>'),
-                    $('<a href="#" class="export_checked"><i class="icon-share"></i>&nbsp;Export checked rows</a>'),
-                    $('<a href="#" class="export_filtered"><i class="icon-share"></i>&nbsp;Export filtered rows</a>')
-                ]
-            },
-            tableCreated: function(data) {    //Fires when the table is created / recreated. Use it if you want to manipulate the table in any way.
-                console.log('table created'); //data.table holds the html table element.
-                console.log(data);            //'this' keyword also holds the html table element.
-            },
-            rowClicked: function(data) {      //Fires when a row is clicked (Note. You need a column with the 'unique' property).
-                console.log('row clicked');   //data.event holds the original jQuery event.
-                console.log(data);            //data.row holds the underlying row you supplied.
-                //data.column holds the underlying column you supplied.
-                //data.checked is true if row is checked.
-                //'this' keyword holds the clicked element.
-                if ( $(this).hasClass('userId') ) {
-                    data.event.preventDefault();
-                    alert('You clicked userId: ' + data.row.userId);
-                }
-            },
-            columnClicked: function(data) {    //Fires when a column is clicked
-                console.log('column clicked');  //data.event holds the original jQuery event
-                console.log(data);              //data.column holds the underlying column you supplied
-                //data.descending is true when sorted descending (duh)
-            },
-            pageChanged: function(data) {      //Fires when manually changing page
-                console.log('page changed');    //data.event holds the original jQuery event
-                console.log(data);              //data.page holds the new page index
-            },
-            pageSizeChanged: function(data) {  //Fires when manually changing pagesize
-                console.log('pagesize changed');//data.event holds teh original event
-                console.log(data);              //data.pageSize holds the new pagesize
-            }
-        }).data('WATable');  //This step reaches into the html data property to get the actual WATable object. Important if you want a reference to it as we want here.
+    var masterData;
 
-        //Generate some data
-        var data = getData();
-        waTable.setData(data);  //Sets the data.
-        //waTable.setData(data, true); //Sets the data but prevents any previously set columns from being overwritten
-        //waTable.setData(data, false, false); //Sets the data and prevents any previously checked rows from being reset
+    var data=OZ.sapOrganizer.getData();
 
-        var allRows = waTable.getData(false); //Gets the data you previously set.
-        var checkedRows = waTable.getData(true); //Gets the data you previously set, but with checked rows only.
-        var filteredRows = waTable.getData(false, true); //Gets the data you previously set, but with filtered rows only.
+    OZ.sapOrganizer.buildTable(data);
 
-        var pageSize = waTable.option("pageSize"); //Get option
-        //waTable.option("pageSize", pageSize); //Set option
-
-        //Example event handler triggered by the custom refresh link above.
-        $('body').on('click', '.refresh', function(e) {
-            e.preventDefault();
-            var data = getData();
-            waTable.setData(data, true);
-        });
-        //Example event handler triggered by the custom export links above.
-        $('body').on('click', '.export_checked, .export_filtered, .export_all', function(e) {
-            e.preventDefault();
-            var elem = $(e.target);
-            var data;
-            if (elem.hasClass('export_all')) data = waTable.getData(false);
-            else if (elem.hasClass('export_checked')) data = waTable.getData(true);
-            else if (elem.hasClass('export_filtered')) data = waTable.getData(false, true);
-            console.log(data.rows.length + ' rows returned');
-            console.log(data);
-            alert(data.rows.length + ' rows returned.\nSee console for details.');
-        });
+    $("#testAnimate").on("click", function(){
+        console.log('Click!ddd');
+        $(this).animate({ opacity: 0, left: "600px"}, 400,function() {$(this).css('display', 'none');});
+        //$('#tabContainer').show(200);
+        //OZ.sapOrganizer.buildTable(masterData);
 
     });
+
+
+    $('#tabpage_2').hide();
+
+    $('#btnBuild').on('click',function(){
+
+        console.log('Clicked!');
+        var e=$(this);
+        var cName='btnAdvanced';
+        console.log(cName);
+        console.log('hasClass:'+e.hasClass(cName));
+        if(e.hasClass(cName)){
+            e.removeClass(cName);
+            e.text('Detailed');
+            $('#tabpage_1').hide();
+            $('#tabpage_2').fadeThenSlideToggle();
+            //$('#tabpage_2').slideDown(speed, easing).fadeTo(speed, 1, easing, callback);
+        }
+        else{
+            e.addClass(cName);
+            e.text('Summary');
+            $('#tabpage_2').hide();
+            //$('#tabpage_1').show(200);
+            $('#tabpage_1').fadeThenSlideToggle();
+
+        }
+
+
+    });
+
+
+//    var url = 'file://Volumes/Data/jaehoo/Development/Github/oz-sap-pi-organizer/js/data.json';
+//    $.ajax({
+//        type: 'GET',
+//        url: url,
+//        async: false,
+//        contentType: "application/json",
+//        dataType: 'jsonp'
+//    });
+
+
+
+
+
+//    $.ajax({
+//        type: 'GET',
+//        url : 'file://Volumes/Data/jaehoo/Development/Github/oz-sap-pi-organizer/js/data.json',
+//        dataType : 'jsonp',
+//        data : {"a":new Date()},
+//                contentType: "application/javascript",
+//        error: function (xhr, textStatus, errorThrown) {
+//
+//            console.log("Failed to perform AJAX call! textStatus: (" + textStatus +
+//                    ") and errorThrown: (" + errorThrown + ")");
+//
+//        }
+//        ,success:function(){
+//            console.log('SUCCESS!!');
+//        }
+//    });
+
+//    Modernizr.load({
+//        load: 'js/data.js',
+//        callback: function (url, result, key) {
+//            // whenever this runs, your script has just executed.
+//            console.info('script.js has loaded!');
+//
+//            var src=OZ.sapOrganizer.jsonFormat(masterData);
+//            OZ.sapOrganizer.buildTable(src);
+//        }
+//    });
+//
+//
+//    $(document).ready( function() {
+//        OZ.view.loadTabs();
+//    });
+
+
+
 
 </script>
 </body>

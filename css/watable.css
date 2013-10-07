@@ -41,6 +41,7 @@
 
 .watable .btn-toolbar {
   margin: 2px 0 0 0;
+  min-width: 482px;
 }
 
 .watable .btn-toolbar .btn-group {
@@ -67,7 +68,7 @@
   padding: 0;
   box-shadow: none;
   border: none;
-  width: 80px;
+  width: 100%;
   float: left;
 }
 
@@ -151,7 +152,7 @@
 .icon-cog{background-position:-432px 0;}
 .icon-trash{background-position:-456px 0;}
 .icon-home{background-position:0 -24px;}
-.icon-file{background-position:-24px -24px;}
+.icon-file.icon-file{background-position:-24px -24px;}
 .icon-time{background-position:-48px -24px;}
 .icon-road{background-position:-72px -24px;}
 .icon-download-alt{background-position:-96px -24px;}
