@@ -28,7 +28,7 @@ OZ.sapOrganizer.getData = function (){
     });
 
     $.ajax({
-        url: 'js/rows.json',
+        url: 'js/data.json',
         type: 'GET',
         dataType: 'json',
         contentType: "application/json; charset=utf-8",

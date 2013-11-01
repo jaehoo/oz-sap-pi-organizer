@@ -1,0 +1,174 @@
+
+
+
+@import url(bootstrap.min.css)
+@import url(normalize.css)
+
+body, html
+  background-color: #FFF
+  font: normal normal normal 1em/1.5em Helvetica, sans-serif
+
+pre
+  font-family: monospace
+
+#pagewrap
+  margin: 0 auto
+  width: 700px
+
+#search
+  -webkit-border-radius: 10px
+  background-color: white
+  padding: 10px
+  position: fixed
+  right: 40px
+  display: none
+
+header 
+  display inline-block
+  position relative
+  padding 20px 0
+  width 100%
+  white-space nowrap 
+
+
+
+table
+  background-color: white
+  -webkit-border-radius: 10px
+  width: 100%
+  padding: 10px
+
+th.sortable
+  color: #666
+  cursor: pointer
+  text-decoration: underline
+
+th.sortable:hover
+  color: black
+
+th.sorted-asc, th.sorted-desc
+  color: black
+
+td
+  background-color: white
+
+td.odd
+  background-color: #666
+  color: white
+
+td.hovered
+  background-color: lightblue
+  color: #666
+
+
+#MeteorToolBar
+  margin 0 auto 0 auto
+  width 300px
+
+.mt-menu
+  display: inline-block
+
+.mt-menu > li
+  display: inline-block
+  opacity: 0.5
+  cursor: pointer
+
+#toolBox
+  border: none
+  padding: 0px 10px
+  font-style: italic
+  font: 14px/20px Consolas, Monaco, Monospaced, monospace
+  color: #555
+
+#tabContainer
+  padding: 10px
+  background-color: transparent
+  -moz-border-radius: 4px
+  border-radius: 4px
+  font: .48em "Lucida Sans Unicode", "Lucida Grande", sans-serif
+
+.tabs
+  margin: 3px
+
+.tabs > ul
+  font-size: 1em
+  list-style: none
+  margin: 6px
+  background-color: rgb(90,90,90)
+  display: inline-block
+  float: left
+  -moz-border-radius: 3px
+  border-radius: 3px
+  padding: 2px
+
+.tabs > ul > li
+  margin: 0 0px 0 0
+  padding: 5px 10px
+  display: block
+  float: left
+  color: #FFF
+  -webkit-user-select: none
+  -moz-user-select: none
+  user-select: none
+  -moz-border-radius-topleft: 3px
+  -moz-border-radius-topright: 3px
+  -moz-border-radius-bottomright: 3px
+  -moz-border-radius-bottomleft: 3px
+  border-top-left-radius: 3px
+  border-top-right-radius: 3px
+  border-bottom-right-radius: 3px
+  border-bottom-left-radius: 3px
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0C91EC), color-stop(100%,#257AB6))
+
+.tabs > ul > li:hover
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF))
+  cursor: pointer
+  color: #333
+
+.tabs > ul > li.tabActiveHeader
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF))
+  cursor: pointer
+  color: #333
+  border-color: rgb(173, 173, 173)
+
+.tabscontent
+  -moz-border-radius-topleft: 4px
+  -moz-border-radius-topright: 4px
+  -moz-border-radius-bottomright: 4px
+  -moz-border-radius-bottomleft: 4px
+  background-color #fafafa
+  border-top-left-radius: 4px
+  border-top-right-radius: 4px
+  border-bottom-right-radius: 4px
+  border-bottom-left-radius: 4px
+  padding: 10px 10px 25px
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed))
+  margin: 0
+  min-height 30%
+  color: #333
+  box-shadow: 0px 0px 2px  #777
+
+#btnBuild
+  min-width: 5em
+  
+
+#dynTable
+  width: 100%
+  overflow-x: auto
+
+.tabContentMenu
+  margin: 3px 0 8px
+
+.img-vendor-oz, .img-vendor-sap
+  display: inline-block
+  float left
+  margin 0 10px
+  
+
+.img-vendor-oz
+  width 64px
+  height 64px
+  
+.img-vendor-sap
+  width 120px  
+

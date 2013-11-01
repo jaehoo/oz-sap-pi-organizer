@@ -38,12 +38,14 @@
             },
             "adapSender": {
                 "index": 6,
-                "friendly": "Used Adapter Sender",
+                "friendly": "Adapter Sender",
+                "tooltip": "Used Adapter Sender",
                 "type": "string"
             },
             "adapReceiver": {
                 "index": 7,
-                "friendly": "Used Adapter Receiver",
+                "friendly": "Adapter Receiver",
+                "tooltip": "Used Adapter Receiver",
                 "type": "string"
             },
 
