@@ -1,11 +1,14 @@
 
 
+c_texto = #666
+c_pholder = #555
 
-@import url(bootstrap.min.css)
-@import url(normalize.css)
+
+@import "bootstrap.min.css"
 
 body, html
   background-color: #FFF
+  color: c_texto
   font: normal normal normal 1em/1.5em Helvetica, sans-serif
 
 pre
@@ -24,11 +27,64 @@ pre
   display: none
 
 header 
-  display inline-block
-  position relative
-  padding 20px 0
-  width 100%
+  padding 20px 0  
+  overflow hidden
   white-space nowrap 
+  
+
+  .logo
+    float: left
+    background-color #FFF
+
+    .img-vendor-oz, .img-vendor-sap
+      display: inline-block
+      float left
+      margin 0 10px
+      
+
+    .img-vendor-oz
+      width 64px
+      height 64px
+      
+      
+    .img-vendor-sap
+      width 120px
+
+.magic_toolbar
+  border-radius 4px
+  box-shadow: 0px 0px 2px  #999
+  margin 10px auto 0 auto
+  padding 10px
+  background-color white
+  width 300px
+  position relative
+  white-space nowrap
+  /*overflow hidden*/
+
+  
+
+  .menu
+    display inline-block
+    margin 0
+    padding 0
+    white-space nowrap
+    
+    li 
+      display inline-block
+      a 
+        color red
+
+  input
+    border: none
+    padding: 0px 10px
+    font-style: italic
+    font: 14px/20px Consolas, Monaco, Monospaced, monospace
+    color: c_pholder
+    display inline-block
+
+  .icon-list
+    color blue
+
 
 
 
@@ -39,7 +95,7 @@ table
   padding: 10px
 
 th.sortable
-  color: #666
+  
   cursor: pointer
   text-decoration: underline
 
@@ -61,9 +117,7 @@ td.hovered
   color: #666
 
 
-#MeteorToolBar
-  margin 0 auto 0 auto
-  width 300px
+
 
 .mt-menu
   display: inline-block
@@ -72,13 +126,7 @@ td.hovered
   display: inline-block
   opacity: 0.5
   cursor: pointer
-
-#toolBox
-  border: none
-  padding: 0px 10px
-  font-style: italic
-  font: 14px/20px Consolas, Monaco, Monospaced, monospace
-  color: #555
+  
 
 #tabContainer
   padding: 10px
@@ -159,16 +207,5 @@ td.hovered
 .tabContentMenu
   margin: 3px 0 8px
 
-.img-vendor-oz, .img-vendor-sap
-  display: inline-block
-  float left
-  margin 0 10px
-  
 
-.img-vendor-oz
-  width 64px
-  height 64px
-  
-.img-vendor-sap
-  width 120px  
 
