@@ -2,6 +2,105 @@ var OZ = OZ || {};
 
 OZ.sapOrganizer = OZ.sapOrganizer || {};
 
+/**/
+OZ.sapOrganizer.getSummary = function (){
+
+    console.log("Get Summary page...");
+
+    var data = {};
+    
+    data.cols = OZ.sapOrganizer.getHeader(0);
+    data.rows = OZ.sapOrganizer.getBody();
+
+    console.info(data.cols);
+    console.info(data.rows);
+
+    var tableData = OZ.sapOrganizer.jsonFormat(data);
+
+    tableData.el="#dynTable";
+    OZ.sapOrganizer.buildTable(tableData);
+
+}
+
+OZ.sapOrganizer.getDetail = function (){
+
+    console.log("Get Detail page...");
+
+    var data = {};
+    
+    data.cols = OZ.sapOrganizer.getHeader(1);
+    data.rows = OZ.sapOrganizer.getBody();
+
+    console.info(data.cols);
+    console.info(data.rows);
+
+    var tableData = OZ.sapOrganizer.jsonFormat(data);
+
+    tableData.el="#dynDeatilTable";
+
+    OZ.sapOrganizer.buildTable(tableData);
+
+}
+
+
+
+OZ.sapOrganizer.getBody = function (){
+
+    console.log("Get detail page ...");
+
+    var body;
+
+    $.ajax({
+        url: 'js/data.json',
+        type: 'GET',
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        //data: priv.options.urlData,
+        async: false,
+        success: function (data) {
+            //console.info(data);
+            body=data.rows;
+        },
+        error: function (err) {
+            console.log('request error: '.f(err));
+        }
+    });
+
+    return body;
+
+}
+
+
+
+OZ.sapOrganizer.getHeader = function (id){
+
+    console.log('Getting header...');
+
+    var header;
+
+    $.ajax({
+        url: 'js/cols.json',
+        type: 'GET',
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        //data: priv.options.urlData,
+        async: false,
+        success: function (data) {
+            //console.info("success");
+            //console.info(data);
+            header=data.cols[id];
+            //console.info(header);
+        },
+        error: function (err) {
+            console.log('request error: '.f(err));
+        }
+    });
+
+    return header;
+}
+
+
+
 OZ.sapOrganizer.getData = function (){
 
     console.log('Calling... getData');
@@ -36,7 +135,7 @@ OZ.sapOrganizer.getData = function (){
         async: false,
         success: function (data) {
             priv.data=data;
-            console.log(priv.data);
+            //console.log(priv.data);
 
         },
         error: function (err) {
@@ -77,18 +176,25 @@ OZ.sapOrganizer.getData = function (){
 
 }
 
+
+/*
+Convert json data to legible format
+*/
 OZ.sapOrganizer.jsonFormat = function(json){
     console.log("Format json data");
 
 
-    var data={};
+    var data = {};
 
-    data.cols=json.cols;
+    data.cols = json.cols;
     data.rows = [];
 
-    var rows=  json.rows;
+    var rows = json.rows;
     var row;
     var e;
+
+    //console.info("format:");
+    //console.info(rows);
 
     for(var i in rows ) {
         row= rows[i];
@@ -108,12 +214,26 @@ OZ.sapOrganizer.jsonFormat = function(json){
         e.senderContact = row.meta.sender.owner;
         e.receiverContact = row.meta.receiver.owner;
 
-        //e.bsysSender = row.metadata.esr.sender.bs;
-        //e.bsysReceiver = row.metadata.esr.receiver.bs;
+        e.bsSender = row.metadata.esr.sender.bs;
+        e.bsReceiver = row.metadata.esr.receiver.bs;
 
+        e.scenarioID = row.metadata.ib.scenario;
 
+        e.swcSender = row.metadata.esr.sender.swc;
+        e.swcReceiver = row.metadata.esr.receiver.swc;
 
-//        console.info(e.id);
+        e.nsSender = row.metadata.esr.sender.namespace;
+        e.nsReciver = row.metadata.esr.receiver.namespace;
+
+        e.siSender = row.metadata.esr.sender.siname;
+        e.siReceiver = row.metadata.esr.receiver.siname;
+
+        e.ccSender = row.metadata.ib.ccsender;
+        e.ccReceiver = row.metadata.ib.ccsender;
+
+        e.fsOwner = row.meta.fs;
+        e.tsOwner = row.meta.ts;
+
 
         data.rows.push(e);
 
@@ -126,7 +246,7 @@ OZ.sapOrganizer.jsonFormat = function(json){
 OZ.sapOrganizer.buildTable= function(data){
     console.log("=============");
 
-    var el= $("#dynTable");
+    var el= $(data.el);
 
     //console.log("build table"+data.cols.id.index);
 
@@ -215,7 +335,7 @@ OZ.sapOrganizer.buildTable= function(data){
     //Example event handler triggered by the custom refresh link above.
     $('body').on('click', '.refresh', function(e) {
         e.preventDefault();
-        var data = getData();
+        var data = waTable.getData();
         waTable.setData(data, true);
     });
     //Example event handler triggered by the custom export links above.

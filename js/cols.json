@@ -1,87 +1,188 @@
 {
-    "cols": [
-        {
-            "id": {
-                "index": 1,
-                "friendly": "ID",
-                "type": "string",
-                "placeHolder": "Self explained",
-                "tooltip": "=P",
-                "filterTooltip": "¬¬"
-            },
-            "aris": {
-                "index": 2,
-                "friendly": "ID ARIS",
-                "type": "string",
-                "placeholder": false,
-                "filterTooltip": false
-            },
-            "track": {
-                "index": 2,
-                "friendly": "Track",
-                "type": "string"
-            },
-            "mode": {
-                "index": 3,
-                "friendly": "Sync or Async",
-                "type": "string"
-            },
-            "sysSender": {
-                "index": 4,
-                "friendly": "Sys Sender",
-                "type": "string"
-            },
-            "sysReceiver": {
-                "index": 5,
-                "friendly": "Sys Receiver",
-                "type": "string"
-            },
-            "adapSender": {
-                "index": 6,
-                "friendly": "Adapter Sender",
-                "tooltip": "Used Adapter Sender",
-                "type": "string"
-            },
-            "adapReceiver": {
-                "index": 7,
-                "friendly": "Adapter Receiver",
-                "tooltip": "Used Adapter Receiver",
-                "type": "string"
-            },
-
-            "senderContact": {
-                "index": 10,
-                "friendly": "Responsable Origen",
-                "type": "string"
-            },
-            "receiverContact": {
-                "index": 11,
-                "friendly": "Responsable Destino",
-                "type": "string"
-            }
+    "cols": [{
+        "id": {
+            "index": 1,
+            "friendly": "ID",
+            "type": "string",
+            "placeHolder": "Self explained",
+            "tooltip": "=P",
+            "filterTooltip": "¬¬"
         },
-        {
-            "id": {
-                "index": 1,
-                "friendly": "ID",
-                "type": "string",
-                "placeHolder": "Self explained",
-                "tooltip": "=P",
-                "filterTooltip": "¬¬"
-            },
-            "aris": {
-                "index": 2,
-                "friendly": "ID ARIS",
-                "type": "string",
-                "placeholder": false,
-                "filterTooltip": false
-            },
-            "track": {
-                "index": 2,
-                "friendly": "Track",
-                "type": "string"
-            }
+        "aris": {
+            "index": 2,
+            "friendly": "ID ARIS",
+            "type": "string",
+            "placeholder": false,
+            "filterTooltip": false
+        },
+        "track": {
+            "index": 2,
+            "friendly": "Track",
+            "type": "string"
+        },
+        "mode": {
+            "index": 3,
+            "friendly": "Sync or Async",
+            "type": "string"
+        },
+        "sysSender": {
+            "index": 4,
+            "friendly": "Sys Sender",
+            "type": "string"
+        },
+        "sysReceiver": {
+            "index": 5,
+            "friendly": "Sys Receiver",
+            "type": "string"
+        },
+        "adapSender": {
+            "index": 6,
+            "friendly": "Adapter Sender",
+            "tooltip": "Used Adapter Sender",
+            "type": "string"
+        },
+        "adapReceiver": {
+            "index": 7,
+            "friendly": "Adapter Receiver",
+            "tooltip": "Used Adapter Receiver",
+            "type": "string"
+        },
 
+        "senderContact": {
+            "index": 10,
+            "friendly": "Responsable Origen",
+            "type": "string"
+        },
+        "receiverContact": {
+            "index": 11,
+            "friendly": "Responsable Destino",
+            "type": "string"
         }
-    ]
+    },
+    {
+        "id": {
+            "index": 1,
+            "friendly": "ID",
+            "type": "string",
+            "placeHolder": "Self explained",
+            "tooltip": "=P",
+            "filterTooltip": "¬¬"
+        },
+        "aris": {
+            "index": 2,
+            "friendly": "ID ARIS",
+            "type": "string",
+            "placeholder": false,
+            "filterTooltip": false
+        },
+        "track": {
+            "index": 2,
+            "friendly": "Track",
+            "type": "string"
+        },
+        "mode": {
+            "index": 3,
+            "friendly": "Sync or Async",
+            "type": "string"
+        },
+        "sysSender": {
+            "index": 4,
+            "friendly": "Sys Sender",
+            "type": "string"
+        },
+        "sysReceiver": {
+            "index": 5,
+            "friendly": "Sys Receiver",
+            "type": "string"
+        },
+        "adapSender": {
+            "index": 6,
+            "friendly": "Adapter Sender",
+            "tooltip": "Used Adapter Sender",
+            "type": "string"
+        },
+        "adapReceiver": {
+            "index": 7,
+            "friendly": "Adapter Receiver",
+            "tooltip": "Used Adapter Receiver",
+            "type": "string"
+        },
+
+        "senderContact": {
+            "index": 10,
+            "friendly": "Responsable Origen",
+            "type": "string"
+        },
+        "receiverContact": {
+            "index": 11,
+            "friendly": "Responsable Destino",
+            "type": "string"
+        },
+        "bsSender": {
+            "index": 12,
+            "friendly": "BS Sender",
+            "type": "string"
+        },
+        "bsReceiver": {
+            "index": 13,
+            "friendly": "BS Receiver",
+            "type": "string"
+        },
+        "scenarioID": {
+            "index": 14,
+            "friendly": "Integration Scenario",
+            "type": "string"
+        },
+        "swcSender": {
+            "index": 15,
+            "friendly": "SWC Sender",
+            "type": "string"
+        },
+        "swcReceiver": {
+            "index": 16,
+            "friendly": "SWC Sender",
+            "type": "string"
+        },
+        "nsSender": {
+            "index": 17,
+            "friendly": "Namespace Sender",
+            "type": "string"
+        },
+        "nsReciver": {
+            "index": 18,
+            "friendly": "Namespace Receiver",
+            "type": "string"
+        },
+        "siSender": {
+            "index": 19,
+            "friendly": "Interface Sender",
+            "type": "string"
+        },
+        "siReceiver": {
+            "index": 20,
+            "friendly": "Interface Receiver",
+            "type": "string"
+        },
+        "ccSender": {
+            "index": 21,
+            "friendly": "CC Sender",
+            "type": "string"
+        },
+        "ccReceiver": {
+            "index": 22,
+            "friendly": "CC Receiver",
+            "type": "string"
+        },
+        "fsOwner": {
+            "index": 23,
+            "friendly": "Functional Spec",
+            "type": "string"
+        },
+        "tsOwner": {
+            "index": 24,
+            "friendly": "Tech Spech",
+            "type": "string"
+        }
+    }]
+
 }

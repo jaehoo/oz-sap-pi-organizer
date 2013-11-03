@@ -79,19 +79,15 @@
                 <input  type="text" placeholder="Type here!"/>
 
                 <ul class="menu">
-                    <li>
-                        <a href="#" class="icon-barcode"></a>
-                        
-                        
-                    </li>
-
-                    <li><a href="#">C</a></li>
-                    <li><a href="#">O</a></li>
                     
-
-                    <li><i id="btnDynTable" class="ico-list"></i></li>
-                    <li><i id="btnDynTable" class="ico-search"></i></li>
-                    <li><a href="" class="icon-list"></a></li>
+                    <!-- <li><a href="#">C</a></li>-->
+                    <!-- <li><a href="#">O</a></li> -->
+                    <li><a class="ico-search"></a></li>
+                    <li><a id="op_fast_search" href="#" class="ico-lightning"></a></li>
+                    <li><a class="ico-list2"></a></li>
+                    <!-- <li><a href="#" class="icon-list"></a></li>-->
+                    
+                    
                 </ul>
             </div>
         </header>
@@ -121,9 +117,13 @@
 
 
                     <div id="dynTable"></div>
+                    
 
                 </div>
                 <div class="tabpage" id="tabpage_2">
+
+                    <div id="dynDeatilTable"></div>
+                    
                     <h2>Page 2</h2>
                     <p>Pellentesque habitant morbi tristique senectus...</p>
                 </div>
@@ -187,11 +187,15 @@
 
 <script type="text/javascript">
 
-var masterData;
+
+    OZ.sapOrganizer.getSummary();
+    OZ.sapOrganizer.getDetail();
+
+/*var masterData;
 
 var data=OZ.sapOrganizer.getData();
 
-OZ.sapOrganizer.buildTable(data);
+OZ.sapOrganizer.buildTable(data)¨*/
 
 $("#testAnimate").on("click", function(){
     console.log('Click!ddd');
