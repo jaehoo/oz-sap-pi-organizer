@@ -76,7 +76,8 @@
             </div>
 
             <div class="magic_toolbar">
-                <input  type="text" placeholder="Type here!"/>
+                <input id ="magic_box" type="text" placeholder="Type here!"/>
+                
 
                 <ul class="menu">
                     
@@ -190,7 +191,8 @@
 
     OZ.sapOrganizer.getSummary();
     OZ.sapOrganizer.getDetail();
-
+    OZ.sapOrganizer.initBox();
+    
 /*var masterData;
 
 var data=OZ.sapOrganizer.getData();
@@ -209,6 +211,9 @@ $("#testAnimate").on("click", function(){
 $('#tabpage_2').hide();
 
 $('#btnBuild').on('click',function(){
+
+    
+
 
     console.log('Clicked!');
     var e=$(this);

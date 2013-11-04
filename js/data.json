@@ -66,7 +66,7 @@
                 "aris": "AFC.ACO.010.098",
                 "track": "Finanzas",
                 "fs": "GAL_AFC_ACO_010_098_EF_InterfazCFDDatosMaestros_alta.V1.doc",
-                "et": "GAL_AFC_ACO_010_098_ET_InterfazCFDDatosMaestros_alta",
+                "et": "GAL_AFX_ACO_010_098_ET_InterfazCFDDatosMaestros_alta",
                 "procTime": "",
                 "peekTime": "",
                 "maxMsjPerHour": "",
@@ -117,7 +117,7 @@
         {
             "meta": {
                 "id": "2",
-                "aris": "AFC.ACO.010.098",
+                "aris": "AFX.ACO.010.098",
                 "track": "Finanzas",
                 "fs": "GAL_AFC_ACO_010_098_EF_InterfazCFDDatosMaestros_alta.V1.doc",
                 "et": "GAL_AFC_ACO_010_098_ET_InterfazCFDDatosMaestros_alta",
