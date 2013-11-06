@@ -303,13 +303,12 @@ OZ.sapOrganizer.buildTable= function(data){
             ]
         },
         tableCreated: function(data) {    //Fires when the table is created / recreated. Use it if you want to manipulate the table in any way.
-            console.log('table created'); //data.table holds the html table element.
+            //console.log('table created'); //data.table holds the html table element.
             //console.log(data);            //'this' keyword also holds the html table element.
         },
         rowClicked: function(data) {      //Fires when a row is clicked (Note. You need a column with the 'unique' property).
             console.log('row clicked');   //data.event holds the original jQuery event.
-
-            console.log(data.row);            //data.row holds the underlying row you supplied.
+            //console.log(data);            //data.row holds the underlying row you supplied.
             //data.column holds the underlying column you supplied.
             //data.checked is true if row is checked.
             //'this' keyword holds the clicked element.

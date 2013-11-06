@@ -6,7 +6,6 @@
             "type": "string",
             "placeHolder": "Self explained",
             "tooltip": "=P",
-            "unique": true,
             "filterTooltip": "¬¬"
         },
         "aris": {
@@ -67,7 +66,6 @@
             "type": "string",
             "placeHolder": "Self explained",
             "tooltip": "=P",
-            "unique": true,
             "filterTooltip": "¬¬"
         },
         "aris": {

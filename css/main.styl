@@ -10,9 +10,6 @@ body, html
   color: c_texto
   font: normal normal normal 1em/1.5em Helvetica, sans-serif
 
-a
-  color c_texto
-
 pre
   font-family: monospace
 
@@ -35,9 +32,8 @@ header
   
 
   .logo
-    display block
-    //background-color #FFF
-    overflow hidden
+    float: left
+    background-color #FFF
 
     .img-vendor-oz, .img-vendor-sap
       display: inline-block
@@ -126,6 +122,9 @@ td.hovered
   background-color: lightblue
   color: #666
 
+
+
+
 .mt-menu
   display: inline-block
 
@@ -186,7 +185,7 @@ td.hovered
   color: #333
   border-color: rgb(173, 173, 173)
 
-.boxHolder
+.tabscontent
   -moz-border-radius-topleft: 4px
   -moz-border-radius-topright: 4px
   -moz-border-radius-bottomright: 4px
@@ -213,64 +212,4 @@ td.hovered
 .tabContentMenu
   margin: 3px 0 8px
 
-.detailScenario
-  font-size .8em
 
-  .dsnd, .drcv, .dpi
-    padding 3px
-    display block
-    width 100%
-
-.dsnd, .drcv, .dpi 
-  > h3
-    border-bottom 1px solid #bbb
-    color #333
-    font-style bold
-    font-size 12.5pt
-    margin 0 0 5px 0
-    padding-left 3px
-
-
-  .dpi
-    border-right 1px solid #ccc
-    border-left 1px solid #ccc
-
-.ico-cancel-circle
-  text-decoration none
-  cursor pointer
-  position absolute
-  float right
-
-.ico-cancel-circle:hover
-  color #FF6036
-
-.dsnd 
-  label
-    display inline-block
-    line-height normal
-    font-weight normal
-    margin 0
-
-  p
-    margin 0
-    strong
-      width 80px;
-      display inline-block
-
-
-@media screen and (min-width:768px)
-  .detailScenario
-    .dsnd, .drcv, .dpi
-      display inline-block
-      width 31%
-
-  .magic_toolbar
-    display block
-    position relative
-    width 300px
-    white-space nowrap
-
-  header 
-    .logo
-      float left
-      

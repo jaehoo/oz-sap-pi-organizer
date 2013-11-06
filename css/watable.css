@@ -10,9 +10,6 @@
 .watable p {
   margin: 0;
 }
-.watable thead tr th > a{
-  color: #428BCA;
-}
 .watable td,
 .watable th {
   line-height: 18px;
