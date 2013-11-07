@@ -256,10 +256,30 @@ OZ.sapOrganizer.jsonFormat = function(json){
 
 }
 
+
 OZ.sapOrganizer.buildTable= function(data){
     console.log("=============");
 
     var el= $(data.el);
+
+
+    function createElement(data){
+        
+        //console.info('#elDetail'+data.row.id);
+        console.info($('#elDetail'+data.row.id).exists());
+        if($('#elDetail'+data.row.id).exists()){
+            data.event.preventDefault();
+
+            return ;
+        }
+        else{
+
+            return $('<article>', { id: "elDetail"+data.row.id , text: 'div.sample', class: 'detailScenario boxHolder newBox'});    
+        }
+
+
+        
+    }
 
     //console.log("build table"+data.cols.id.index);
 
@@ -303,19 +323,37 @@ OZ.sapOrganizer.buildTable= function(data){
             ]
         },
         tableCreated: function(data) {    //Fires when the table is created / recreated. Use it if you want to manipulate the table in any way.
-            //console.log('table created'); //data.table holds the html table element.
+            console.log('table created'); //data.table holds the html table element.
             //console.log(data);            //'this' keyword also holds the html table element.
         },
         rowClicked: function(data) {      //Fires when a row is clicked (Note. You need a column with the 'unique' property).
             console.log('row clicked');   //data.event holds the original jQuery event.
-            //console.log(data);            //data.row holds the underlying row you supplied.
+            console.log(data.row.id);            //data.row holds the underlying row you supplied.
             //data.column holds the underlying column you supplied.
             //data.checked is true if row is checked.
             //'this' keyword holds the clicked element.
-            if ( $(this).hasClass('userId') ) {
-                data.event.preventDefault();
-                alert('You clicked userId: ' + data.row.userId);
+
+            
+            var detail= createElement(data);
+            //console.info(($(detail).exists()));
+
+            if($(detail).exists()){
+                   $(".popcontainer").append(detail);
+                    detail.fadeThenSlideToggle();
+                //debbuger;
+                //$('.popcontainer').html($('<div>', {class: ['detailScenario','boxholder']}));
+
+                /*if ( $(this).hasClass('userId') ) {
+                    data.event.preventDefault();
+                    alert('You clicked userId: ' + data.row.userId);
+                }*/
+                
             }
+            else{
+             data.event.preventDefault();
+            }
+
+
         },
         columnClicked: function(data) {    //Fires when a column is clicked
             console.log('column clicked');  //data.event holds the original jQuery event
@@ -588,6 +626,8 @@ OZ.view.loadTabs = function(){
     }
 }
 
+jQuery.fn.exists = function(){return this.length>0;}
+
 jQuery.fn.fadeThenSlideToggle = function(speed, easing, callback) {
     if (this.is(":hidden")) {
         return this.slideDown(speed, easing).fadeTo(speed, 1, easing, callback);
@@ -754,3 +794,4 @@ OZ.sapOrganizer.initBox = function(){
             });
     });
 }
+

@@ -6,7 +6,8 @@
             "type": "string",
             "placeHolder": "Self explained",
             "tooltip": "=P",
-            "filterTooltip": "¬¬"
+            "filterTooltip": "¬¬",
+            "unique": true
         },
         "aris": {
             "index": 2,
@@ -66,7 +67,8 @@
             "type": "string",
             "placeHolder": "Self explained",
             "tooltip": "=P",
-            "filterTooltip": "¬¬"
+            "filterTooltip": "¬¬",
+            "unique": true
         },
         "aris": {
             "index": 2,

@@ -1,5 +1,6 @@
 c_texto = #666
 c_pholder = #555
+c_links = #428BCA
 
 
 @import "bootstrap.min.css";
@@ -9,6 +10,9 @@ body, html
   background-color: #FFF
   color: c_texto
   font: normal normal normal 1em/1.5em Helvetica, sans-serif
+
+a
+  color c_texto
 
 pre
   font-family: monospace
@@ -32,8 +36,9 @@ header
   
 
   .logo
-    float: left
-    background-color #FFF
+    display block
+    //background-color #FFF
+    overflow hidden
 
     .img-vendor-oz, .img-vendor-sap
       display: inline-block
@@ -122,9 +127,6 @@ td.hovered
   background-color: lightblue
   color: #666
 
-
-
-
 .mt-menu
   display: inline-block
 
@@ -185,7 +187,7 @@ td.hovered
   color: #333
   border-color: rgb(173, 173, 173)
 
-.tabscontent
+.boxHolder
   -moz-border-radius-topleft: 4px
   -moz-border-radius-topright: 4px
   -moz-border-radius-bottomright: 4px
@@ -212,4 +214,70 @@ td.hovered
 .tabContentMenu
   margin: 3px 0 8px
 
+.detailScenario
+  font-size .8em
+  margin 10px 0;
 
+  .dsnd, .drcv, .dpi
+    padding 3px
+    display block
+    width 100%
+
+
+.dsnd, .drcv, .dpi 
+  > h3
+    border-bottom 1px solid #bbb
+    color #333
+    font-style bold
+    font-size 12.5pt
+    margin 0 0 5px 0
+    padding-left 3px
+    color c_links
+
+  label
+    display inline-block
+    line-height normal
+    font-weight normal
+    margin 0
+
+  p
+    margin 0
+    strong
+      width 80px;
+      display inline-block
+
+  /**.dpi,
+    border-right 1px solid #ccc
+    border-left 1px solid #ccc*/
+
+.ico-cancel-circle
+  cursor pointer
+  float right
+  display: block;
+
+.ico-cancel-circle:hover
+  color #FF6036
+  text-decoration none
+
+.newBox{
+  display none;
+}
+
+@media screen and (min-width:768px)
+  .detailScenario
+    .dsnd, .drcv, .dpi
+      display inline-block
+      width 31%
+      vertical-align top
+
+
+  .magic_toolbar
+    display block
+    position relative
+    width 300px
+    white-space nowrap
+
+  header 
+    .logo
+      float left
+      
