@@ -89,7 +89,7 @@
                         "namespace": "urn:sap-com:document:sap:idoc:messages",
                         "siname": "CREMDM.CREMDM04",
                         "type": "A",
-                        "standar": "Sd"
+                        "standar": "S"
                     },
                     "midle": {
                         "opemap": "",
@@ -113,60 +113,171 @@
                     "adapterReceiver": "FILE"
                 }
             }
-        },
+        }
+        ,
         {
-            "meta": {
-                "id": "2",
-                "aris": "AFX.ACO.010.098",
-                "track": "Finanzas",
-                "fs": "GAL_AFC_ACO_010_098_EF_InterfazCFDDatosMaestros_alta.V1.doc",
-                "et": "GAL_AFC_ACO_010_098_ET_InterfazCFDDatosMaestros_alta",
-                "procTime": "",
-                "peekTime": "",
-                "maxMsjPerHour": "",
-                "maxMsjSize": "",
-                "sender": {
-                    "sysName": "ECC",
-                    "owner": ""
+            "meta":{
+                "id":"2",
+                "aris":"AFC.ACO.010.098",
+                "track":"Finanzas",
+                "fs":"GAL_AFC_ACO_010_098_EF_InterfazCFDDatosMaestros_alta.V1.doc",
+                "et":"GAL_AFC_ACO_010_098_ET_InterfazCFDDatosMaestros_alta",
+                "procTime":"",
+                "peekTime":"",
+                "maxMsjPerHour":"",
+                "maxMsjSize":"",
+                "sender":{
+                    "sysName":"ECC",
+                    "owner":""
                 },
-                "receiver": {
-                    "sysName": "LGCYFI",
-                    "owner": ""
-                }
-            },
-            "metadata": {
-                "id": "2",
-                "esr": {
-                    "sender": {
-                        "bs": "Application_system_ECC",
-                        "swc": "SWC_ECC_FI 1.0 of grupoassa.com",
-                        "namespace": "urn:sap-com:document:sap:idoc:messages",
-                        "siname": "CREMDM.CREMDM04",
-                        "type": "A",
-                        "standar": "S"
-                    },
-                    "middle": {
-                        "opemap": "",
-                        "msjmap": ""
-                    },
-                    "receiver": {
-                        "bs": "SYS_EPH_LGCYFI_PRD",
-                        "swc": "SWC_LGCY_FI 1.0 of grupoassa.com",
-                        "namespace": "SWC_LGCY_FI 1.0 of grupoassa.com",
-                        "siname": "SuppliersMC_In",
-                        "type": "A",
-                        "standar": "S"
-                    }
-                },
-                "ib": {
-                    "scenario": "Suppliers",
-                    "type": "",
-                    "ccsender": "clase de abap",
-                    "adapterSender": "PROXY",
-                    "ccreceiver": "FILE_rcv_SupplierMC",
-                    "adapterReceiver": "FILE"
+                "receiver":{
+                    "sysName":"LGCYFI",
+                    "owner":""
                 }
             }
+            ,
+            "metadata":{
+                "id":"2",
+                "esr":{
+                    "sender":{
+                        "bs":"Application_system_ECC",
+                        "swc":"SWC_ECC_FI 1.0 of grupoassa.com",
+                        "namespace":"urn:sap-com:document:sap:idoc:messages",
+                        "siname":"CREMDM.CREMDM04",
+                        "type":"A",
+                        "standar":"S"
+                    },
+                    "middle":{
+                        "opemap":"",
+                        "msjmap":""
+                    },
+                    "receiver":{
+                        "bs":"SYS_EPH_LGCYFI_PRD",
+                        "swc":"SWC_LGCY_FI 1.0 of grupoassa.com",
+                        "namespace":"SWC_LGCY_FI 1.0 of grupoassa.com",
+                        "siname":"SuppliersMC_In",
+                        "type":"A",
+                        "standar":"S"
+                    }
+                },
+                "ib":{
+                    "scenario":"Suppliers",
+                    "type":"",
+                    "ccsender":"clase de abap",
+                    "adapterSender":"PROXY",
+                    "ccreceiver":"FILE_rcv_SupplierMC",
+                    "adapterReceiver":"FILE"
+                }
+            }
+        },
+
+        {
+            "meta":{
+                "id":"3",
+                "aris":"AFC.ACO.010.098",
+                "track":"Finanzas",
+                "fs":"GAL_AFC_ACO_010_098_EF_InterfazCFDDatosMaestros_alta.V1.doc",
+                "et":"GAL_AFC_ACO_010_098_ET_InterfazCFDDatosMaestros_alta",
+                "procTime":"",
+                "peekTime":"",
+                "maxMsjPerHour":"",
+                "maxMsjSize":"",
+                "sender":{
+                    "sysName":"ECC",
+                    "owner":""
+                },
+                "receiver":{
+                    "sysName":"LGCYFI",
+                    "owner":""
+                }
+            },"metadata":{
+            "id":"3",
+            "esr":{
+                "sender":{
+                    "bs":"Application_system_ECC",
+                    "swc":"SWC_ECC_FI 1.0 of grupoassa.com",
+                    "namespace":"urn:sap-com:document:sap:idoc:messages",
+                    "siname":"CREMDM.CREMDM04",
+                    "type":"A",
+                    "standar":"S"
+                },
+                "middle":{
+                    "opemap":"",
+                    "msjmap":""
+                },
+                "receiver":{
+                    "bs":"SYS_EPH_LGCYFI_PRD",
+                    "swc":"SWC_LGCY_FI 1.0 of grupoassa.com",
+                    "namespace":"SWC_LGCY_FI 1.0 of grupoassa.com",
+                    "siname":"SuppliersMC_In",
+                    "type":"A",
+                    "standar":"S"
+                }
+            },
+            "ib":{
+                "scenario":"Suppliers",
+                "type":"",
+                "ccsender":"Proxy Class",
+                "adapterSender":"PROXY",
+                "ccreceiver":"FILE_rcv_SupplierMC",
+                "adapterReceiver":"FILE"
+            }
         }
+      },
+{
+"meta":{
+  "id":"10",
+  "aris":"PIX.SRM.130.065",
+"track":"Inmobiliaria",
+  "fs":"GAL_PIX_SRM_130_065_ET_Interface CatalogPublicationRequest_Out.d",
+  "et":"GAL_PIX_SRM_130_065_ET_Interface CatalogPublicationRequest_Out.d",
+  "procTime":"",
+  "peekTime":"",
+  "maxMsjPerHour":"",
+  "maxMsjSize":"",
+  "sender":{
+   "sysName":"SRM",
+   "owner":""
+  },
+  "receiver":{
+   "sysName":"MDM",
+   "owner":""
+  }
+ },"metadata":{
+  "id":"10",
+  "esr":{
+   "sender":{
+    "bs":"Application_system_SRP",
+    "swc":"SRM SERVER 7.01",
+    "namespace":"",
+    "siname":"",
+    "type":"A",
+    "standar":"S"
+   },
+   "middle":{
+    "opemap":"",
+    "msjmap":""
+   },
+   "receiver":{
+    "bs":"Application_system_MDP",
+    "swc":"SRM-MDM CATALOG 7.01",
+    "namespace":"http://sap.com/xi/SRM-MDMCatalog",
+    "siname":"MDMSupplierListTransmission_In",
+    "type":"A",
+    "standar":"S"
+   }
+  },
+"ib":{
+   "scenario":"SRM_MDM_Catalog_701",
+   "type":"",
+   "ccsender":"XI_snd_proveedores",
+   "adapterSender":"XI",
+   "ccreceiver":"MDM_rcv_proveedores",
+   "adapterReceiver":"MDM"
+  }
+}
+}
+
+
     ]
 }

@@ -1,3 +1,7 @@
+.watable{
+  margin: 0;
+}
+
 .watable * {
   white-space: nowrap;
   font-size: 8pt !important;
@@ -5,10 +9,15 @@
 
 .watable.table {
   width: auto;
+  margin: 0px;
 }
 
 .watable p {
   margin: 0;
+}
+
+.watable thead tr th a{
+  color: #428BCA;
 }
 .watable td,
 .watable th {

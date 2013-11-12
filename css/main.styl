@@ -1,7 +1,11 @@
+@import "nib"
+@import 'nib/vendor'
+@import 'nib/gradients'
+
 c_texto = #666
 c_pholder = #555
 c_links = #428BCA
-
+vendor-prefixes ?= webkit moz official ms o
 
 @import "bootstrap.min.css";
 @import "iconos.styl";
@@ -18,16 +22,16 @@ pre
   font-family: monospace
 
 #pagewrap
-  margin: 0 auto
-  width: 700px
+  margin 0 auto
+  width 700px
 
 #search
-  -webkit-border-radius: 10px
-  background-color: white
-  padding: 10px
-  position: fixed
-  right: 40px
-  display: none
+  border-radius 10px
+  background-color white
+  padding 10px
+  position fixed
+  right 40px
+  display none
 
 header 
   padding 20px 0  
@@ -83,16 +87,16 @@ header
 
 
   input
-    border: none
-    padding: 0px 10px
-    font-style: italic
-    font: 14px/20px Consolas, Monaco, Monospaced, monospace
-    color: c_pholder
+    border none
+    padding 0px 10px
+    font-style italic
+    font 14px/20px Consolas, Monaco, Monospaced, monospace
+    color c_pholder
     display inline-block
 
 #op_fast_search:hover
   color yellow
-  text-shadow 0 1px 1px #777
+  text-shadow 0 .5pt .5pt #777
 
 
 .ico-list2:hover
@@ -101,7 +105,7 @@ header
 
 table
   background-color: white
-  -webkit-border-radius: 10px
+  border-radius: 10px
   width: 100%
   padding: 10px
 
@@ -121,95 +125,98 @@ td
 
 td.odd
   background-color: #666
-  color: white
+  color white
 
 td.hovered
-  background-color: lightblue
-  color: #666
+  background-color lightblue
+  color #666
 
 .mt-menu
   display: inline-block
 
 .mt-menu > li
-  display: inline-block
-  opacity: 0.5
-  cursor: pointer
+  display inline-block
+  opacity 0.5
+  cursor pointer
   
 
 #tabContainer
-  padding: 10px
-  background-color: transparent
-  -moz-border-radius: 4px
+  padding 10px
+  background-color transparent
   border-radius: 4px
-  font: .48em "Lucida Sans Unicode", "Lucida Grande", sans-serif
+  font "Lucida Sans Unicode", "Lucida Grande", sans-serif
 
 .tabs
-  margin: 3px
+  margin 3px
 
 .tabs > ul
-  font-size: 1em
-  list-style: none
-  margin: 6px
-  background-color: rgb(90,90,90)
-  display: inline-block
-  float: left
-  -moz-border-radius: 3px
+  font-size 1em
+  list-style none
+  margin 6px
+  background-color rgb(90,90,90)
+  display inline-block
+  float left
   border-radius: 3px
   padding: 2px
 
 .tabs > ul > li
-  margin: 0 0px 0 0
-  padding: 5px 10px
-  display: block
-  float: left
-  color: #FFF
-  -webkit-user-select: none
-  -moz-user-select: none
-  user-select: none
-  -moz-border-radius-topleft: 3px
+  margin 0 0px 0 0
+  padding 5px 10px
+  display block
+  float left
+  color #FFF
+  /*-webkit-user-select: none
+  -moz-user-select: none*/
+  user-select none
+  /*-moz-border-radius-topleft: 3px
   -moz-border-radius-topright: 3px
   -moz-border-radius-bottomright: 3px
-  -moz-border-radius-bottomleft: 3px
-  border-top-left-radius: 3px
-  border-top-right-radius: 3px
-  border-bottom-right-radius: 3px
-  border-bottom-left-radius: 3px
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0C91EC), color-stop(100%,#257AB6))
+  -moz-border-radius-bottomleft: 3px*/
+  border-top-left-radius 3px
+  border-top-right-radius 3px
+  border-bottom-right-radius 3px
+  border-bottom-left-radius 3px
+  background linear-gradient(linear, left top, left bottom, color-stop(0%,#0C91EC), color-stop(100%,#257AB6))
 
 .tabs > ul > li:hover
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF))
+  background: linear-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF))
   cursor: pointer
   color: #333
 
 .tabs > ul > li.tabActiveHeader
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF))
+  background: linear-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF))
   cursor: pointer
   color: #333
   border-color: rgb(173, 173, 173)
 
 .boxHolder
-  -moz-border-radius-topleft: 4px
+  /*-moz-border-radius-topleft: 4px
   -moz-border-radius-topright: 4px
   -moz-border-radius-bottomright: 4px
-  -moz-border-radius-bottomleft: 4px
+  -moz-border-radius-bottomleft: 4px*/
   background-color #fafafa
+  border 1px solid #CCCCCC
   border-top-left-radius: 4px
   border-top-right-radius: 4px
   border-bottom-right-radius: 4px
   border-bottom-left-radius: 4px
   padding: 10px 10px 25px
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed))
+  background: linear-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed))
   margin: 0
   color: #333
-  box-shadow: 0px 0px 2px  #777
+  box-shadow: 0px 1px .6pt  #CCC
 
 #btnBuild
   min-width: 5em
   
-
-#dynTable, #dynDeatilTable
+#dynDeatilTable
+  overflow-x scroll
+  position relative
+  height 100%
+/*#dynTable, #dynDeatilTable
   width: 100%
-  overflow-x: auto
+  overflow-x visible
+  overflow-y visible*/
 
 .tabContentMenu
   margin: 3px 0 8px
@@ -217,11 +224,13 @@ td.hovered
 .detailScenario
   font-size .8em
   margin 10px 0;
+  position relative
 
   .dsnd, .drcv, .dpi
     padding 3px
     display block
     width 100%
+    margin-bottom 5px
 
 
 .dsnd, .drcv, .dpi 
@@ -239,37 +248,71 @@ td.hovered
     line-height normal
     font-weight normal
     margin 0
+    padding-left 3px
 
   p
     margin 0
     strong
-      width 80px;
+      width 80px
       display inline-block
+      padding-left 3px
 
-  /**.dpi,
+    strong:after  
+      content ":"
+
+  p:hover
+    background-color #F0F0F0
+
+  /**.dpi,ñ
     border-right 1px solid #ccc
     border-left 1px solid #ccc*/
 
-.ico-cancel-circle
+.iclose
   cursor pointer
+  display block
   float right
-  display: block;
+  font-size 7pt
+  padding 5px
 
-.ico-cancel-circle:hover
-  color #FF6036
+.iclose:hover
+  //color #FF6036
+  background-color #777
+  color #fff
   text-decoration none
+  border-radius 50%
 
-.newBox{
-  display none;
-}
+
+.newBox
+  display none
+  opacity 0
+
+.popcontainer
+  padding 10px
+
+.itemHead
+  margin 0 0 3px
+
+  span
+    color gray
+    font-size 1.8 em
+
+    a,  a:hover
+      font-size 13 pt
+      text-decoration none
+      vertical-align middle
+      padding 0 10px
+
+#boxIndicator
+  color #ccc
+
+
 
 @media screen and (min-width:768px)
   .detailScenario
     .dsnd, .drcv, .dpi
       display inline-block
-      width 31%
       vertical-align top
-
+      width 31%
 
   .magic_toolbar
     display block

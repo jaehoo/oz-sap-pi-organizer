@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/normalize.css">
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css">-->
     <!--<link rel='stylesheet' href="css/bootstrap-combined.min.css"/>-->
@@ -76,14 +76,14 @@
             </div>
 
             <div class="magic_toolbar">
-                <input id ="magic_box" type="text" placeholder="Type here!"/>
+                <input id ="magic_box" type="text" placeholder="Type here!" />
                 
 
                 <ul class="menu">
 
                     <!-- <li><a href="#">C</a></li>-->
                     <!-- <li><a href="#">O</a></li> -->
-                    <li><a class="ico-search"></a></li>
+                    <li><a id="boxIndicator" class="ico-search"></a></li>
                     <li><a id="op_fast_search" href="#" class="ico-lightning"></a></li>
                     <li><a class="ico-list2"></a></li>
                     <!-- <li><a href="#" class="icon-list"></a></li>-->
@@ -110,11 +110,11 @@
                     <a id='testAnimate' class="btn btn-default btnAdvanced">animate</a>
                 </div>
 
-                <div class="tabpage" id="tabpage_1">
+                <!-- <div class="tabpage" id="tabpage_1">
                     <div id="dynTable"></div>
-                </div>
+                </div> -->
 
-                <div class="tabpage" id="tabpage_2">
+                <div  id="tabpage_2">
                     <div id="dynDeatilTable"></div>
                 </div>
 
@@ -125,8 +125,12 @@
 
         <section class="popcontainer">
 
-<article class="detailScenario boxHolder">
-            <a class="ico-cancel-circle"></a>
+<article id="elDetail0" class="detailScenario boxHolder">
+    <a class="iclose ico-close"></a>
+            <div class="itemHead">
+                <span>Inmobiliaria <a>(PIX.SRM.130.065)</a></span>
+                
+            </div>
             <div class="dsnd">
                 <h3>Sender</h3>
                 <p><strong>BS:</strong><label>asd</label></p>
@@ -211,17 +215,31 @@
 
 <script src="js/jquery.watable.js" type="text/javascript" charset="utf-8"></script>
 
-<script src="js/vendor/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
 
 <script type="text/javascript">
 
 
 $(document).ready( function() {
-    OZ.sapOrganizer.getSummary();
+    //OZ.sapOrganizer.getSummary();
     OZ.sapOrganizer.getDetail();
     OZ.sapOrganizer.initBox();
 
-    $('#magic_box').focus();
+    mbox=$('#magic_box');
+    mbox.focus();
+
+    /*$('#boxIndicator').on('click', function(){
+        
+       if(mbox.val().length>0){
+            console.info('clear');
+            mbox.val('');
+            $('#boxIndicator').removeClass('ico-cancel-circle');
+        $('#boxIndicator').addClass('ico-search');
+        }
+
+    });*/
+
+
 });
 
 
@@ -242,8 +260,8 @@ $("#testAnimate").on("click", function(){
     });
 
 
-$('#tabpage_2').hide();
-
+//$('#tabpage_2').hide();
+/*
 $('#btnBuild').on('click',function(){
 
 
@@ -271,7 +289,13 @@ $('#btnBuild').on('click',function(){
         }
 
 
-    });
+    });*/
+
+
+var el3=$('#elDetail0');
+$('.iclose').click(function() { el3.slideAndFadeToggleB();});
+
+
 
 
 //    var url = 'file://Volumes/Data/jaehoo/Development/Github/oz-sap-pi-organizer/js/data.json';

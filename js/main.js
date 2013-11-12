@@ -12,6 +12,7 @@ OZ.sapOrganizer.refresh = function(){
     var tableData = OZ.sapOrganizer.jsonFormat(data);
     waTable.setData(tableData, true);
 
+
 }
 
 
@@ -256,30 +257,96 @@ OZ.sapOrganizer.jsonFormat = function(json){
 
 }
 
+OZ.sapOrganizer.createDetailBox = function(data){
+
+    //console.info('#elDetail'+data.row.id);
+    var item = data.row;
+
+    var nBox=  $('<article>', { id: "elDetail"+item.id , class: 'detailScenario boxHolder newBox'});
+    var iclose = $('<a class="iclose ico-close"></a>');
+
+    var titleItem = $('<div>', { class: 'itemHead' }).append(
+        '<span>'+item.track+'<a>'+item.aris+'</a></span>');
+    
+    // console.info(data);
+    
+    var entries = {
+
+        sender:{
+            title:'Sender',
+            attr:{ class:'dsnd'},
+            values:{
+                "System": item.sysSender,
+                "BS": item.bsSender,
+                "SWC": item.swcSender,
+                "Namespace": item.nsSender,
+                "SIName":item.siSender,
+                'Type':item.mode,
+                'Apdater': item.adapSender,
+                'CC':item.ccSender
+            }
+        },
+        pi:{
+            title:'PI',
+            attr:{ class:'dpi'},
+            values:{
+                'Scenario':item.scenarioID,
+                'Mapping':''
+            }
+        },
+        receiver:{
+            title:'Receiver',
+            attr:{ class:'drcv'},
+            values:{
+                'System':item.sysSender,
+                'BS': item.bsReceiver,
+                'SWC': item.swcReceiver,
+                'Namespace': item.nsReciver,
+                'SIName': item.siReceiver,
+                'Type': item.mode,
+                'Apdater': item.adapReceiver,
+                'CC': item.ccReceiver
+            }
+        }
+    };
+
+    function addItems(entries){
+
+        for( i in entries ){
+
+            var item = $('<div>', entries[i].attr);
+            item.append('<h3>'+ entries[i].title +'</h3>');
+
+            $.each(entries[i].values, function(key, value){
+                if(value.length!=0){
+                    item.append('<p><strong>'+key+'</strong><label>'+value+'</label></p>');    
+                }
+                    //console.log(key, value);
+                });    
+
+            nBox.append(item);
+        }
+    }
+
+    nBox.append( iclose );
+    nBox.append( titleItem );
+    addItems( entries );
+    
+    // Events
+    iclose.on('click',function(){
+        //console.info('Close me!');
+        nBox.slideAndFadeToggleB();
+    });
+
+    return nBox;
+
+}
+
 
 OZ.sapOrganizer.buildTable= function(data){
-    console.log("=============");
+    //console.log("=============");
 
     var el= $(data.el);
-
-
-    function createElement(data){
-        
-        //console.info('#elDetail'+data.row.id);
-        console.info($('#elDetail'+data.row.id).exists());
-        if($('#elDetail'+data.row.id).exists()){
-            data.event.preventDefault();
-
-            return ;
-        }
-        else{
-
-            return $('<article>', { id: "elDetail"+data.row.id , text: 'div.sample', class: 'detailScenario boxHolder newBox'});    
-        }
-
-
-        
-    }
 
     //console.log("build table"+data.cols.id.index);
 
@@ -327,32 +394,27 @@ OZ.sapOrganizer.buildTable= function(data){
             //console.log(data);            //'this' keyword also holds the html table element.
         },
         rowClicked: function(data) {      //Fires when a row is clicked (Note. You need a column with the 'unique' property).
-            console.log('row clicked');   //data.event holds the original jQuery event.
-            console.log(data.row.id);            //data.row holds the underlying row you supplied.
+            //console.log('row clicked');   //data.event holds the original jQuery event.
+            //console.log(data.row.id);            //data.row holds the underlying row you supplied.
             //data.column holds the underlying column you supplied.
             //data.checked is true if row is checked.
             //'this' keyword holds the clicked element.
 
+            //data.event holds the original jQuery event
             
-            var detail= createElement(data);
-            //console.info(($(detail).exists()));
-
-            if($(detail).exists()){
-                   $(".popcontainer").append(detail);
-                    detail.fadeThenSlideToggle();
-                //debbuger;
-                //$('.popcontainer').html($('<div>', {class: ['detailScenario','boxholder']}));
-
-                /*if ( $(this).hasClass('userId') ) {
-                    data.event.preventDefault();
-                    alert('You clicked userId: ' + data.row.userId);
-                }*/
-                
+            detailBox=$('#elDetail'+data.row.id);
+            console.info('exists: '+detailBox.exists() +'Is Hidden:'+detailBox.is(":hidden"));
+            
+            if(detailBox.exists()){
+                data.event.preventDefault();
+                return ;
             }
             else{
-             data.event.preventDefault();
-            }
 
+                var detailBox= OZ.sapOrganizer.createDetailBox(data);
+                $(".popcontainer").prepend(detailBox);
+                detailBox.fadeThenSlideToggle(500);
+            }
 
         },
         columnClicked: function(data) {    //Fires when a column is clicked
@@ -629,34 +691,46 @@ OZ.view.loadTabs = function(){
 jQuery.fn.exists = function(){return this.length>0;}
 
 jQuery.fn.fadeThenSlideToggle = function(speed, easing, callback) {
-    if (this.is(":hidden")) {
+    
+    if (this.is(":hidden")) {   
         return this.slideDown(speed, easing).fadeTo(speed, 1, easing, callback);
     } else {
         return this.fadeTo(speed, 0, easing).slideUp(speed, easing, callback);
     }
 };
 
+
+
 jQuery.fn.slideAndFadeToggle = function(speed, easing, callback) {
     if (this.is(":hidden")) {
 
-        this.animate({ opacity: 1, top: "0px", height: 'toggle'}, 400, function() {/* Animation complete.*/});
+        this.animate({ opacity: 1, top: "0px", height: 'toggle'}, speed, function() {/* Animation complete.*/});
 
     } else {
-        this.animate({ opacity: 0, top: "0px",height: 'toggle'}, 400, function() {/* Animation complete.*/});
+        this.animate({ opacity: 0, top: "0px",height: 'toggle'}, speed, function() {/* Animation complete.*/});
     }
 };
 
 jQuery.fn.slideAndFadeToggleB = function(speed, easing, callback) {
     //  console.info("isHidenn: "+this.is(":hidden"));
-    if (this.is(":hidden")) {
 
+    if (this.is(":hidden")) {
         //this.animate({ left: "0px"});
         this.css('display', '');
-        this.animate({ opacity: 1, left: "0px"}, 400,function() {$(this).css('display', '');});
+        this.animate({ opacity: 1, left: "0px"}, 150,function() {$(this).css('display', '');});
 
     } else {
-
-        this.animate({ opacity: 0, left: "600px"}, 400,function() {$(this).css('display', 'none');});
+        //console.info("close efect...");
+        this.animate({ opacity: 0, left: "100px"}, 150,function() {
+            
+            $(this).slideUp(300, function(){
+                //console.info('slade');
+                this.remove();
+            });
+            
+            //console.info('FINISH!!');
+            //$(this).css('display', 'none');
+        });
     }
 };
 
@@ -708,19 +782,39 @@ OZ.sapOrganizer.initBox = function(){
     //filter box
     //$('#search').show();
     
+    var boxIndicator = $('#boxIndicator');
+
+    boxIndicator.on('click', function(){
+        
+       if(mbox.val().length>0){
+            console.info('clear');
+            mbox.val('');
+            //boxIndicator.removeClass('ico-cancel-circle');
+            //boxIndicator.addClass('ico-search');
+        }
+
+    });
+
+
     $(inputBox).keyup(function(event) {
 
         //console.info($(inputBox).val());
 
     if($(inputBox).val()) {
-        console.info('empty!!');
+        //console.info('empty!!');
         iconLigthin.css( "color", "yellow" );
+        //boxIndicator.removeClass('ico-search');
+        //boxIndicator.addClass('ico-cancel-circle');
+
+
         //iconLigthin.addClass('ico-lightning-sel');
     }
     else{
         //console.info('NO EMPTY');
         //iconLigthin.removeClass('ico-lightning-sel');
         iconLigthin.css( "color", "" );
+        boxIndicator.removeClass('ico-cancel-circle');
+        boxIndicator.addClass('ico-search');
     }
 
         //if esc is pressed or nothing is entered
