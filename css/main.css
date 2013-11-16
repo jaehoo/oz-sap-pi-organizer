@@ -354,30 +354,46 @@ header .logo .img-vendor-sap {
   width: 120px;
 }
 .magic_toolbar {
-  -webkit-border-radius: 2em;
-  border-radius: 2em;
-  -webkit-box-shadow: 0px 0px 2px #999;
-  box-shadow: 0px 0px 2px #999;
-  margin: 0 auto 0;
-  padding: 0 0.9em;
   background-color: #fff;
-  vertical-align: middle;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+  border: 1px solid #aaa;
+  -webkit-box-shadow: inset 0px 1px 1px #ccc;
+  box-shadow: inset 0px 1px 1px #ccc;
+  height: 1.7em;
+  line-height: 0;
+  margin: 0 auto 0;
+  overflow: hidden;
+  padding: 0;
+  vertical-align: top;
 /*overflow hidden*/
 }
 .magic_toolbar input {
+  background: transparent;
   border: none;
-  padding: 0px 3px;
-  font-style: italic;
-  font: 14px/20px Consolas, Monaco, Monospaced, monospace;
   color: #555;
-  display: block;
+  font-style: italic;
+  font: 12px/20px Consolas, Monaco, Monospaced, monospace;
+  height: 100%;
+  padding: 0 0.9em;
+  vertical-align: top;
+  width: 80%;
+}
+.magic_toolbar #boxIndicator2 {
+  height: 100%;
+  display: inline-block;
+  float: right;
+  padding: 0.3em 0.5em;
+  text-align: middle;
+  vertical-align: bottom;
 }
 .menu {
   display: inline-block;
   margin: 0;
-  padding: 0;
+  padding: 5px 0 3px;
   white-space: nowrap;
   float: right;
+  line-height: 0;
 }
 .menu li {
   display: inline-block;
@@ -442,8 +458,8 @@ td.hovered {
   font: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 .tabs {
-  border: 1px solid #f00;
-  padding: 10px;
+  padding: 0.3em;
+  overflow: hidden;
 }
 /*.tabs
   margin 3px
@@ -611,8 +627,11 @@ td.hovered {
   vertical-align: middle;
   padding: 0 10px;
 }
-#boxIndicator {
+#boxIndicator,
+#boxIndicator2 {
   color: #ccc;
+  cursor: pointer;
+  text-decoration: none;
 }
 #tabpage_2 {
   display: block;
@@ -623,12 +642,12 @@ td.hovered {
   .detailScenario .dpi {
     display: inline-block;
     vertical-align: top;
-    width: 31%;
+    width: 32%;
   }
   .magic_toolbar {
     display: inline-block;
     position: relative;
-    white-space: nowrap;
+    width: 50%;
   }
   header .logo {
     float: left;

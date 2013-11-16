@@ -62,12 +62,17 @@ header
       width 120px
 
 .magic_toolbar
-  border-radius 2em
-  box-shadow: 0px 0px 2px  #999
-  margin 0 auto 0 
-  padding 0 .9em
   background-color white
-  vertical-align middle
+  border-radius 0.2em
+  border 1px solid #AAA
+  box-shadow inset 0px 1px 1px  #ccc
+  height 1.7em
+  line-height 0
+  margin 0 auto 0 
+  overflow hidden
+  padding 0 
+  vertical-align top
+  
   //width 100%
   //width 300px
   //position relative
@@ -75,19 +80,34 @@ header
   /*overflow hidden*/
 
   input
+    background transparent
     border none
-    padding 0px 3px
-    font-style italic
-    font 14px/20px Consolas, Monaco, Monospaced, monospace
     color c_pholder
-    display block
+    font-style italic
+    font 12px/20px Consolas, Monaco, Monospaced, monospace
+    height 100%
+    padding 0 0.9em
+    vertical-align top
+    width 80%
+    //padding 0.4em 0px .2em
+
+  #boxIndicator2
+    height 100%
+    display inline-block
+    float right
+    padding .3em .5em
+    text-align middle
+    vertical-align bottom
+
 
 .menu
   display inline-block
   margin 0
-  padding 0
+  padding 5px 0 3px
   white-space nowrap
   float right
+  line-height 0
+
 
   li 
     display inline-block
@@ -150,8 +170,9 @@ td.hovered
   font "Lucida Sans Unicode", "Lucida Grande", sans-serif
 
 .tabs
-  border 1px solid red
-  padding 10px
+  //border 1px solid red
+  padding .3em
+  overflow hidden
 
 
 /*.tabs
@@ -305,8 +326,13 @@ td.hovered
       vertical-align middle
       padding 0 10px
 
-#boxIndicator
+#boxIndicator,#boxIndicator2
   color #ccc
+  cursor pointer
+  text-decoration none
+
+
+
 
 #tabpage_2
   display block
@@ -317,13 +343,13 @@ td.hovered
     .dsnd, .drcv, .dpi
       display inline-block
       vertical-align top
-      width 31%
+      width 32%
 
   .magic_toolbar
     display inline-block
     position relative
-    //width 100%
-    white-space nowrap
+    width 50%
+    //white-space nowrap
 
   header 
     .logo
