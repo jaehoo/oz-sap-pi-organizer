@@ -353,8 +353,8 @@ OZ.sapOrganizer.buildTable= function(data){
     //An example with all options.
     var waTable = el.WATable({
         pageSize: 8,                //Sets the initial pagesize
-        filter: true,               //Show filter fields
-        columnPicker: true,         //Show the columnPicker button
+        filter: false,               //Show filter fields
+        columnPicker: false,         //Show the columnPicker button
         pageSizes: [1,5,8,12,200],  //Set custom pageSizes. Leave empty array to hide button.
         hidePagerOnEmpty: true,     //Removes the pager if data is empty.
         checkboxes: true,           //Make rows checkable. (Note. You need a column with the 'unique' property)
@@ -725,7 +725,7 @@ jQuery.fn.slideAndFadeToggleB = function(speed, easing, callback) {
             
             $(this).slideUp(300, function(){
                 //console.info('slade');
-                this.remove();
+                $(this).remove();
             });
             
             //console.info('FINISH!!');

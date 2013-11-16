@@ -15,6 +15,9 @@ body, html
   color: c_texto
   font: normal normal normal 1em/1.5em Helvetica, sans-serif
 
+body
+  overflow-x auto
+
 a
   color c_texto
 
@@ -59,40 +62,40 @@ header
       width 120px
 
 .magic_toolbar
-  border-radius 4px
+  border-radius 2em
   box-shadow: 0px 0px 2px  #999
-  margin 10px auto 0 auto
-  padding 10px
+  margin 0 auto 0 
+  padding 0 .9em
   background-color white
-  width 300px
-  position relative
-  white-space nowrap
+  vertical-align middle
+  //width 100%
+  //width 300px
+  //position relative
+  //white-space nowrap
   /*overflow hidden*/
-
-  
-
-  .menu
-    display inline-block
-    margin 0
-    padding 0
-    white-space nowrap
-    
-    li 
-      display inline-block
-      padding 0 5px
-      a        
-        text-decoration none
-        cursor pointer
-        color c_texto
-
 
   input
     border none
-    padding 0px 10px
+    padding 0px 3px
     font-style italic
     font 14px/20px Consolas, Monaco, Monospaced, monospace
     color c_pholder
+    display block
+
+.menu
+  display inline-block
+  margin 0
+  padding 0
+  white-space nowrap
+  float right
+
+  li 
     display inline-block
+    padding 0 5px
+    a        
+      text-decoration none
+      cursor pointer
+      color c_texto
 
 #op_fast_search:hover
   color yellow
@@ -147,6 +150,11 @@ td.hovered
   font "Lucida Sans Unicode", "Lucida Grande", sans-serif
 
 .tabs
+  border 1px solid red
+  padding 10px
+
+
+/*.tabs
   margin 3px
 
 .tabs > ul
@@ -165,13 +173,7 @@ td.hovered
   display block
   float left
   color #FFF
-  /*-webkit-user-select: none
-  -moz-user-select: none*/
   user-select none
-  /*-moz-border-radius-topleft: 3px
-  -moz-border-radius-topright: 3px
-  -moz-border-radius-bottomright: 3px
-  -moz-border-radius-bottomleft: 3px*/
   border-top-left-radius 3px
   border-top-right-radius 3px
   border-bottom-right-radius 3px
@@ -187,7 +189,7 @@ td.hovered
   background: linear-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF))
   cursor: pointer
   color: #333
-  border-color: rgb(173, 173, 173)
+  border-color: rgb(173, 173, 173)*/
 
 .boxHolder
   /*-moz-border-radius-topleft: 4px
@@ -288,6 +290,7 @@ td.hovered
 
 .popcontainer
   padding 10px
+  overflow-x hidden
 
 .itemHead
   margin 0 0 3px
@@ -305,6 +308,8 @@ td.hovered
 #boxIndicator
   color #ccc
 
+#tabpage_2
+  display block
 
 
 @media screen and (min-width:768px)
@@ -315,9 +320,9 @@ td.hovered
       width 31%
 
   .magic_toolbar
-    display block
+    display inline-block
     position relative
-    width 300px
+    //width 100%
     white-space nowrap
 
   header 
