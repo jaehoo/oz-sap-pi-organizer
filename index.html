@@ -65,11 +65,14 @@
     </div>
 </div>
 
+
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
 
         <header>
+
             <div class="logo">
                 <img src="img/favicon-big.png" class="img-vendor-oz" alt="OZ_logo"/>
                 <img src="img/SAP-Logo.png" class="img-vendor-sap" alt="SAP_logo"/>
@@ -86,32 +89,32 @@
             <div class="tabs">
                 <div class="magic_toolbar">
                     <input id ="magic_box" type="text" placeholder="I'll get lucky!" />
-                    <a id="boxIndicator2" class="ico-search"></a>
+                    <a id="boxIndicator" class="ico-search"></a>
                 </div>
 
 
-                    <ul class="menu">
+                <ul class="menu">
 
-                        <!-- <li><a href="#">C</a></li>-->
-                        <!-- <li><a href="#">O</a></li> -->
-                        <li><a id="boxIndicator" class="ico-search"></a></li>
-                        <li><a id="op_fast_search" href="#" class="ico-lightning"></a></li>
-                        <li><a class="ico-list2"></a></li>
-                        <!-- <li><a href="#" class="icon-list"></a></li>-->
+                    <!-- <li><a href="#">C</a></li>-->
+                    <!-- <li><a href="#">O</a></li> -->
+                    <li><a id="boxIndicator2" class="ico-search"></a></li>
+                    <li><a id="op_fast_search" href="#" class="ico-lightning"></a></li>
+                    <li><a class="ico-list2"></a></li>
+                    <!-- <li><a href="#" class="icon-list"></a></li>-->
 
 
-                    </ul>
+                </ul>
 
             </div>
 
             <div class="tabContentMenu">
-                
+
 
                 <a id='btnBuild' class="btnAdvanced btn btn-default">Summary</a>
                 <a id='testAnimate' class="btn btn-default btnAdvanced">animate</a>
 
                 <div>
-                    
+
                 </div>
 
 
@@ -216,6 +219,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>window.d3 || document.write('<script src="js/vendor/d3.v3.min.js"><\/script>')</script>
+
 
 
 
@@ -232,11 +238,17 @@
 
 
     $(document).ready( function() {
+
+        d3.select("body").selectAll("p")
+        .data([4, 8, 15, 16, 23, 42])
+        .enter().append("p")
+        .text(function(d) { return "I’m number " + d + "!"; });
     //OZ.sapOrganizer.getSummary();
     OZ.sapOrganizer.getDetail();
     OZ.sapOrganizer.initBox();
 
     mbox=$('#magic_box');
+    mbox.val('');
     mbox.focus();
 
     /*$('#boxIndicator').on('click', function(){

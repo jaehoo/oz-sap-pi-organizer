@@ -379,13 +379,24 @@ header .logo .img-vendor-sap {
   vertical-align: top;
   width: 80%;
 }
-.magic_toolbar #boxIndicator2 {
+.magic_toolbar #boxIndicator {
   height: 100%;
   display: inline-block;
   float: right;
   padding: 0.3em 0.5em;
   text-align: middle;
-  vertical-align: bottom;
+  vertical-align: middle;
+}
+.magic_toolbar .ico-clearbox:before {
+  content: "\e644";
+  cursor: pointer;
+  font-size: 9pt;
+  vertical-align: top;
+}
+#boxIndicator,
+#boxIndicator2 {
+  color: #666;
+  text-decoration: none;
 }
 .menu {
   display: inline-block;
@@ -610,7 +621,7 @@ td.hovered {
   filter: alpha(opacity=0);
 }
 .popcontainer {
-  padding: 10px;
+  padding: 10px 0;
   overflow-x: hidden;
 }
 .itemHead {
@@ -626,12 +637,6 @@ td.hovered {
   text-decoration: none;
   vertical-align: middle;
   padding: 0 10px;
-}
-#boxIndicator,
-#boxIndicator2 {
-  color: #ccc;
-  cursor: pointer;
-  text-decoration: none;
 }
 #tabpage_2 {
   display: block;

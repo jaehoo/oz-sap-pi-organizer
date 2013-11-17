@@ -383,10 +383,10 @@ OZ.sapOrganizer.buildTable= function(data){
             filter: true,         //If true, the filter fields can be toggled visible and hidden.
             columnPicker: true,   //if true, the columnPicker can be toggled visible and hidden.
             custom: [             //Add any other elements here. Here is a refresh and export example.
-                $('<a href="#" class="refresh"><i class="icon-refresh"></i>&nbsp;Refresh</a>'),
-                $('<a href="#" class="export_all"><i class="icon-share"></i>&nbsp;Export all rows</a>'),
-                $('<a href="#" class="export_checked"><i class="icon-share"></i>&nbsp;Export checked rows</a>'),
-                $('<a href="#" class="export_filtered"><i class="icon-share"></i>&nbsp;Export filtered rows</a>')
+            $('<a href="#" class="refresh"><i class="icon-refresh"></i>&nbsp;Refresh</a>'),
+            $('<a href="#" class="export_all"><i class="icon-share"></i>&nbsp;Export all rows</a>'),
+            $('<a href="#" class="export_checked"><i class="icon-share"></i>&nbsp;Export checked rows</a>'),
+            $('<a href="#" class="export_filtered"><i class="icon-share"></i>&nbsp;Export filtered rows</a>')
             ]
         },
         tableCreated: function(data) {    //Fires when the table is created / recreated. Use it if you want to manipulate the table in any way.
@@ -490,29 +490,29 @@ OZ.sapOrganizer.getSampleData1 = function() {
             }
         },
         rows: [
-            {
-                userId: 1,
-                interfaceType: "Async",
-                track: "Mercaderias"
-            },
-            {
-                userId: 2,
-                interfaceType: "Sync",
-                track: {a:'aw', b:'aaaa'}
+        {
+            userId: 1,
+            interfaceType: "Async",
+            track: "Mercaderias"
+        },
+        {
+            userId: 2,
+            interfaceType: "Sync",
+            track: {a:'aw', b:'aaaa'}
                 //track: "Mercaderias"
             }
-        ]
+            ]
+        }
+
+
+        return data;
+
     }
 
 
-    return data;
-
-}
 
 
-
-
-OZ.sapOrganizer.getSampleData = function() {
+    OZ.sapOrganizer.getSampleData = function() {
 
     //First define the columns
     var cols = {
@@ -572,10 +572,10 @@ OZ.sapOrganizer.getSampleData = function() {
      but on a row level. See below on how we create a weightFormat property. This will be used when rendering the weight column.
      Also, you can pre-check rows with the 'checked' property and prevent rows from being checkable with the 'checkable' property.
      */
-    var rows = [];
-    var i = 1;
-    while(i <= 500)
-    {
+     var rows = [];
+     var i = 1;
+     while(i <= 500)
+     {
         var weight = (Math.floor(Math.random()*40)+50) + (Math.floor(Math.random()*100)/100);
         var weightClass = weight <70 ? 'green' : weight <80 && weight >=70 ? 'yellow' : 'red';
 
@@ -589,8 +589,8 @@ OZ.sapOrganizer.getSampleData = function() {
             height: Math.floor(Math.random()*50)+150,
             important: i%3 == 0 ? undefined : i%4 == 0,
             someDate: i%4 == 0
-                ? undefined
-                : Date.now() + (i*Math.floor(Math.random()*(60*60*24*100))),
+            ? undefined
+            : Date.now() + (i*Math.floor(Math.random()*(60*60*24*100))),
             checkable: i % 4 != 0,
             checked: i % 3 == 0
         };
@@ -646,9 +646,9 @@ function elfName() {
  * @type {{}}
  */
 
-OZ.view = OZ.view = {};
+ OZ.view = OZ.view = {};
 
-OZ.view.loadTabs = function(){
+ OZ.view.loadTabs = function(){
 
     console.log('========= TBAS');
 
@@ -691,7 +691,7 @@ OZ.view.loadTabs = function(){
 jQuery.fn.exists = function(){return this.length>0;}
 
 jQuery.fn.fadeThenSlideToggle = function(speed, easing, callback) {
-    
+
     if (this.is(":hidden")) {   
         return this.slideDown(speed, easing).fadeTo(speed, 1, easing, callback);
     } else {
@@ -704,11 +704,11 @@ jQuery.fn.fadeThenSlideToggle = function(speed, easing, callback) {
 jQuery.fn.slideAndFadeToggle = function(speed, easing, callback) {
     if (this.is(":hidden")) {
 
-        this.animate({ opacity: 1, top: "0px", height: 'toggle'}, speed, function() {/* Animation complete.*/});
+    this.animate({ opacity: 1, top: "0px", height: 'toggle'}, speed, function() {/* Animation complete.*/});
 
-    } else {
-        this.animate({ opacity: 0, top: "0px",height: 'toggle'}, speed, function() {/* Animation complete.*/});
-    }
+} else {
+this.animate({ opacity: 0, top: "0px",height: 'toggle'}, speed, function() {/* Animation complete.*/});
+}
 };
 
 jQuery.fn.slideAndFadeToggleB = function(speed, easing, callback) {
@@ -722,7 +722,7 @@ jQuery.fn.slideAndFadeToggleB = function(speed, easing, callback) {
     } else {
         //console.info("close efect...");
         this.animate({ opacity: 0, left: "100px"}, 150,function() {
-            
+
             $(this).slideUp(300, function(){
                 //console.info('slade');
                 $(this).remove();
@@ -741,7 +741,7 @@ jQuery.fn.slideAndFadeToggleB = function(speed, easing, callback) {
 function zebraRows(selector, className)
 {
     $(selector).removeClass(className)
-        .addClass(className);
+    .addClass(className);
 }
 
 //filter results based on query
@@ -761,7 +761,7 @@ OZ.sapOrganizer.initBox = function(){
 
     var e= '#dynDeatilTable table tbody tr'
     var tel= $(e);
-    var inputBox = '#magic_box';
+    var inputBox = $('#magic_box');
 
     var iconLigthin = $('#op_fast_search');
 
@@ -784,36 +784,48 @@ OZ.sapOrganizer.initBox = function(){
     
     var boxIndicator = $('#boxIndicator');
 
+    var esc = $.Event("keyup", { keyCode: 27 });
+
     boxIndicator.on('click', function(){
+
+            if(inputBox.val()){
+                console.info('clear');
+                inputBox.trigger(esc);
+            }
+            else{
+                event.preventDefault;
+                return
+
+            }    
         
-       if(mbox.val().length>0){
-            console.info('clear');
-            mbox.val('');
-            //boxIndicator.removeClass('ico-cancel-circle');
-            //boxIndicator.addClass('ico-search');
-        }
+        
 
     });
 
 
-    $(inputBox).keyup(function(event) {
-
-        //console.info($(inputBox).val());
-
-    if($(inputBox).val()) {
-        //console.info('empty!!');
-        iconLigthin.css( "color", "yellow" );
-        //boxIndicator.removeClass('ico-search');
-        //boxIndicator.addClass('ico-cancel-circle');
+    inputBox.keyup(function(event) {
 
 
-        //iconLigthin.addClass('ico-lightning-sel');
+        //console.log(event.keyCode == 27);
+        if (event.keyCode == 27) {
+            boxIndicator.removeClass('ico-clearbox');
+            boxIndicator.addClass('ico-search');
+            inputBox.val('');
+            
+        }
+
+
+        if(inputBox.val()) {
+        //console.info(' NO EMPTY');
+        boxIndicator.removeClass('ico-search');
+        boxIndicator.addClass('ico-clearbox');
+
     }
     else{
-        //console.info('NO EMPTY');
-        //iconLigthin.removeClass('ico-lightning-sel');
+        //console.info('EMPTY');
+
         iconLigthin.css( "color", "" );
-        boxIndicator.removeClass('ico-cancel-circle');
+        boxIndicator.removeClass('ico-clearbox');
         boxIndicator.addClass('ico-search');
     }
 
@@ -840,20 +852,20 @@ OZ.sapOrganizer.initBox = function(){
     //grab all header rows
     $('thead th').each(function(column) {
         $(this).addClass('sortable')
-            .click(function(){
-                var findSortKey = function($cell) {
-                    return $cell.find('.sort-key').text().toUpperCase() + ' ' + $cell.text().toUpperCase();
-                };
+        .click(function(){
+            var findSortKey = function($cell) {
+                return $cell.find('.sort-key').text().toUpperCase() + ' ' + $cell.text().toUpperCase();
+            };
 
-                var sortDirection = $(this).is('.sorted-asc') ? -1 : 1;
+            var sortDirection = $(this).is('.sorted-asc') ? -1 : 1;
 
                 //step back up the tree and get the rows with data
                 //for sorting
                 var $rows       = $(this).parent()
-                    .parent()
-                    .parent()
-                    .find(e)
-                    .get();
+                .parent()
+                .parent()
+                .find(e)
+                .get();
 
                 //loop through all the rows and find
                 $.each($rows, function(index, row) {
@@ -880,12 +892,12 @@ OZ.sapOrganizer.initBox = function(){
 
                 //identify the column to be sorted by
                 $('td').removeClass('sorted')
-                    .filter(':nth-child(' + (column + 1) + ')')
-                    .addClass('sorted');
+                .filter(':nth-child(' + (column + 1) + ')')
+                .addClass('sorted');
 
                 $('.visible td').removeClass('odd');
                 //zebraRows('.visible:even td', 'odd');
             });
-    });
+});
 }
 

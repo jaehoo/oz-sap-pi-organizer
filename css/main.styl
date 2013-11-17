@@ -91,14 +91,24 @@ header
     width 80%
     //padding 0.4em 0px .2em
 
-  #boxIndicator2
+  #boxIndicator
     height 100%
     display inline-block
     float right
     padding .3em .5em
     text-align middle
-    vertical-align bottom
+    vertical-align middle
 
+  .ico-clearbox:before
+    content: "\e644"
+    cursor pointer
+    font-size 9pt
+    vertical-align top
+
+
+#boxIndicator,#boxIndicator2
+  color c_texto
+  text-decoration none
 
 .menu
   display inline-block
@@ -305,12 +315,15 @@ td.hovered
   border-radius 50%
 
 
+
+  
+
 .newBox
   display none
   opacity 0
 
 .popcontainer
-  padding 10px
+  padding 10px 0
   overflow-x hidden
 
 .itemHead
@@ -326,16 +339,11 @@ td.hovered
       vertical-align middle
       padding 0 10px
 
-#boxIndicator,#boxIndicator2
-  color #ccc
-  cursor pointer
-  text-decoration none
-
-
-
 
 #tabpage_2
   display block
+
+
 
 
 @media screen and (min-width:768px)

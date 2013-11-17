@@ -1,0 +1,34 @@
+{
+ "name": "flare",
+ "children": [
+  
+  {
+   "name": "animate",
+   "children": [
+    {"name": "Easing", "size": 10},
+    
+    {"name": "Pause", "size": 20},
+    
+    
+    {"name": "Tween", "size": 60}
+   ]
+  },
+  {
+   "name": "data",
+   "children": [
+    
+    {"name": "DataUtil", "size": 3322}
+   ]
+  },
+  {
+   "name": "display",
+   "children": [
+    {"name": "DirtySprite", "size": 8833},
+    
+    {"name": "TextSprite", "size": 10066}
+   ]
+  }
+ 
+
+ ]
+}
