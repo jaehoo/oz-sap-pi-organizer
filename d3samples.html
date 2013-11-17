@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Radar Chart</title>
-		<script src="js/vendor/Chart.min.js"></script>
+		<title>D3 Examples</title>
+		<script src="js/vendor/d3.v3.min.js"></script>
 		<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
 		<style>
 			canvas{
@@ -10,29 +10,13 @@
 		</style>
 	</head>
 	<body>
-		<canvas id="canvas" height="450" width="450"></canvas>
+
 
 		<div id="e4" class="example"></div>
 
+		
+
 	<script>
-
-		var pieData = [
-				{
-					value: 30,
-					color:"#F38630"
-				},
-				{
-					value : 50,
-					color : "#E0E4CC"
-				},
-				{
-					value : 100,
-					color : "#69D2E7"
-				}
-			
-			];
-
-	var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
 	
 
 	var width = 800,
@@ -47,6 +31,16 @@ var svg = d3.select("#e4").append("svg")
     .append("circle")
         .attr("r", radius)
         .style("fill", "blue");
+
+var dataset = [ 5, 10, 15, 20, 25 ];
+
+        d3.select("body").selectAll("p")
+    .data(dataset)
+    .enter()
+    .append("p")
+        .text(function(d) { return d; });
+
+
 	</script>
 	</body>
 </html>
