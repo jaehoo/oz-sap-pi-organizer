@@ -377,25 +377,26 @@ header .logo .img-vendor-sap {
   height: 100%;
   padding: 0 0.9em;
   vertical-align: top;
-  width: 80%;
+  width: 85%;
 }
 .magic_toolbar #boxIndicator {
   height: 100%;
   display: inline-block;
   float: right;
   padding: 0.3em 0.5em;
-  text-align: middle;
+  text-align: right;
   vertical-align: middle;
+  width: 15%;
 }
 .magic_toolbar .ico-clearbox:before {
-  content: "\e644";
+  content: "\e639";
   cursor: pointer;
-  font-size: 9pt;
+  font-size: 12pt;
   vertical-align: top;
 }
 #boxIndicator,
 #boxIndicator2 {
-  color: #666;
+  color: #aaa;
   text-decoration: none;
 }
 .menu {
