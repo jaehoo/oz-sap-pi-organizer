@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Node-Link Tree</title>
+    <script type="text/javascript" src="js/vendor/protovis.js"></script>
+    
+    <style type="text/css">
+
+body {
+  margin: 0;
+  display: table;
+  height: 100%;
+  width: 100%;
+  font: 14px/134% Helvetica Neue, sans-serif;
+  background: #FAFAFA;
+}
+
+#center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#fig {
+  position: relative;
+  margin: auto;
+}
+
+#fig {
+  width: 800px;
+  height: 700px;
+}
+
+span {
+  border: 1px solid #ccc;
+}
+
+    </style>
+  </head>
+  <body><div id="center"><div id="fig">
+    <script type="text/javascript+protovis">
+
+/**********************************/
+new pv.Panel()
+    .width(150)
+    .height(150)
+  .add(pv.Line)
+    .data([1, 1,1.2])
+    .bottom(function(d) d * 80)
+    .left(function() this.index * 20 + 15)
+    .interpolate("step-after")
+  .add(pv.Dot)
+  .root.render();
+
+/**********************************/
+
+  new pv.Panel()
+    .width(150)
+    .height(150)
+  
+  .add(pv.Dot)
+    .data([[.1, 1], [.3, 1.2], [.5, 1.3]])
+    .left(function(d) d[0] * 150)
+    .bottom(function(d) d[1] * 50)
+ .add(pv.Line)
+    .segmented(true)
+    .data([1, 1.2, 2,1.3])
+    .bottom(function(d) d * 50)
+    .left(function() this.index * 20 + 15)
+    .strokeStyle(function(d) "hsl(" + (d * 180) + ",50%,50%)")
+    .interpolate("step-after")
+  .add(pv.Line)
+    .data([.4,1.2, 1.2])
+    .bottom(function(d) d * 55)
+    .left(function() this.index * 15 + 45)
+    //.left(function(d) d[1] * 30)
+    //.interpolate("step-after")
+  /*.add(pv.Rule)
+    .width(function() this.proto.right())
+    .right(0)*/
+  .root.render();
+
+/**********************************/
+
+    new pv.Panel()
+    .width(150)
+    .height(150)
+  .add(pv.Dot)
+    .data([1, 1.2, 1.7, 1.5, .7, .2])
+    .right(function(d) d * 80)
+    .top(function() this.index * 25 + 10)
+  .add(pv.Rule)
+    .width(function() this.proto.right() - 5)
+    .right(0)
+  .root.render();
+
+/**********************************/
+
+  new pv.Panel()
+    .width(150)
+    .height(150)
+  .add(pv.Dot)
+    .data(["circle", "square", "triangle", "cross", "diamond"])
+    .left(function() Math.random() * 100 + 25)
+    .bottom(function() this.index * 25 + 25)
+    .shape(function(d) d)
+    .fillStyle(pv.Colors.category10().by(pv.index))
+  .root.render();
+
+/**********************************/
+
+var flare = {
+  analytics: {
+   abc:{}
+    /*graph: {
+      BetweennessCentrality: 3534,
+      LinkDistance: 5731,
+      MaxFlowMinCut: 7840,
+      ShortestPaths: 5914,
+      SpanningTree: 3416
+    },
+    optimization: {
+      AspectRatioBanker: 7074
+    }*/
+  },
+   analytics2: {
+   
+  }
+};
+
+
+var vis = new pv.Panel()
+    .width(200)
+    .height(200)
+    .left(40)
+    .right(160)
+    .top(10)
+    .bottom(10);
+
+
+
+var layout = vis.add(pv.Layout.Cluster)
+    .nodes(pv.dom(flare)
+        .root("flare")
+        .sort(function(a, b) pv.naturalOrder(a.nodeName, b.nodeName))
+        .nodes())
+    .group(false)
+    .orient("left");
+
+layout.link.add(pv.Line)
+    .strokeStyle("#ccc")
+    .lineWidth(1)
+    .antialias(true);
+
+layout.node.add(pv.Dot)
+    .fillStyle(function(n) n.firstChild ? "#aec7e8" : "#ff7f0e");
+
+layout.label.add(pv.Label);
+
+vis.render();
+
+/**********************************/
+
+
+
+var vis = new pv.Panel()
+    .width(400)
+    .height(400)
+    .left(-75)
+    .right(75)
+    .top(30)
+    .bottom(80);
+
+var tree = vis.add(pv.Layout.Tree)
+    .nodes(pv.dom(flare).root("PI").nodes())
+    .depth(70)
+    .breadth(-190)
+    .orient("radial");
+
+tree.link.add(pv.Line);
+
+tree.node.add(pv.Dot)
+    .fillStyle(function(n) n.firstChild ? "#aec7e8" : "#ff7f0e");
+
+tree.label.add(pv.Label);
+
+vis.render();
+
+/**********************************/
+
+    </script>
+  </div></div></body>
+</html>

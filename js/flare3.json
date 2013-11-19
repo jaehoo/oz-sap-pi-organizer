@@ -1,0 +1,20 @@
+var flare = {
+  analytics: {
+    cluster: {
+      AgglomerativeCluster: 3938,
+      CommunityStructure: 3812,
+      HierarchicalCluster: 6714,
+      MergeEdge: 743
+    },
+    graph: {
+      BetweennessCentrality: 3534,
+      LinkDistance: 5731,
+      MaxFlowMinCut: 7840,
+      ShortestPaths: 5914,
+      SpanningTree: 3416
+    },
+    optimization: {
+      AspectRatioBanker: 7074
+    }
+  }
+};
