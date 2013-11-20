@@ -369,7 +369,11 @@
                                     cell.html(format.f(val));
                                     break;
                                 case "bool":
-                                    $('<input type="checkbox" {0} disabled />'.f(val ? "checked" : "")).appendTo(cell);
+                                    var disabled = _data.cols[key].disabled ? 'disabled' : '';
+                                    //console.info("disable box:",(_data.cols[key].disabled));
+                                    //var disabled = _data.cols[key].disabled ? 'disabled' : '';
+                                    
+                                    $('<input type="checkbox" {0} {1} />'.f(val ? "checked" : "", disabled)).appendTo(cell);
                                     break;
                             }
                         }

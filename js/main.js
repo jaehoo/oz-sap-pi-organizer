@@ -215,9 +215,12 @@ OZ.sapOrganizer.jsonFormat = function(json){
         e={};
 
         e.id= row.meta.id;
+        e.important = i;
+        //e.checkable = true;
+        e.showDetail = i;
         e.aris= row.meta.aris;
         e.track= row.meta.track;
-        e.mode= row.metadata.esr.sender.type+"/"+row.metadata.esr.receiver.type;
+        e.mode= row.metadata.esr.sender.type;
         e.sysSender = row.meta.sender.sysName;
         e.sysReceiver = row.meta.receiver.sysName;
 
@@ -402,19 +405,40 @@ OZ.sapOrganizer.buildTable= function(data){
 
             //data.event holds the original jQuery event
             
-            detailBox=$('#elDetail'+data.row.id);
-            console.info('exists: '+detailBox.exists() +'Is Hidden:'+detailBox.is(":hidden"));
-            
-            if(detailBox.exists()){
-                data.event.preventDefault();
-                return ;
+            console.info(data);
+            //console.info(data.column.column);
+
+            if(data.column.column == 'showDetail'){
+                // change color checked row
+                //console.info("colorize");
+
+                //var abc= $(this);
+
+                //abc.addClass('beto');
+                //debugger;
+                
+                //console.info(data.checked);
+                detailBox=$('#elDetail'+data.row.id);
+                console.info('exists: '+detailBox.exists() +'Is Hidden:'+detailBox.is(":hidden"));
+                
+                if(detailBox.exists()){
+                    data.event.preventDefault();
+                    return ;
+                }
+                else{
+
+                    var detailBox= OZ.sapOrganizer.createDetailBox(data);
+                    $(".popcontainer").prepend(detailBox);
+                    detailBox.fadeThenSlideToggle(500);
+                }
+
             }
             else{
 
-                var detailBox= OZ.sapOrganizer.createDetailBox(data);
-                $(".popcontainer").prepend(detailBox);
-                detailBox.fadeThenSlideToggle(500);
+
             }
+
+            
 
         },
         columnClicked: function(data) {    //Fires when a column is clicked

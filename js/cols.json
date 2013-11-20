@@ -70,11 +70,24 @@
             "filterTooltip": "¬¬",
             "unique": true
         },
+         "important": {
+                "index": 5, 
+                "type": "number", 
+                "friendly": "<i class='icon-user'></i>",
+                "format": "<a href='#' class='X'>{0}</a>"
+        },
+        "showDetail": {
+            "index": 5,
+            "type": "string",
+            "friendly": "Detail",
+            "format": "<a id='#sa{0}' class='detail ico-info'></a>"
+        },
         "aris": {
             "index": 2,
             "friendly": "ID ARIS",
             "type": "string",
             "placeholder": false,
+            "hidden": true,
             "filterTooltip": false
         },
         "track": {

@@ -642,6 +642,24 @@ td.hovered {
 #tabpage_2 {
   display: block;
 }
+.detail {
+  cursor: pointer;
+  font-size: 12pt !important;
+  text-align: center;
+  vertical-align: middle;
+  display: block;
+  margin: 0 auto;
+}
+.detail:hover {
+  text-decoration: none;
+  color: #008000;
+}
+/*.watable tfoot
+  position absolute
+  top 0
+
+  tr
+  width 100%*/
 @media screen and (min-width:768px) {
   .detailScenario .dsnd,
   .detailScenario .drcv,

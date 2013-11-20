@@ -170,6 +170,11 @@
                 type: "bool",
                 friendly: "Important"
             },
+                        important2: {
+                index: 7,
+                type: "bool",
+                friendly: "Important2"
+            },
             someDate: {
                 index: 6,
                 type: "date", //Don't forget dates are expressed in milliseconds
@@ -199,6 +204,7 @@
                 weightFormat:  "<div class='" + weightClass + "'>{0}</div>",
                 height: Math.floor(Math.random()*50)+150,
                 important: i%3 == 0 ? undefined : i%4 == 0,
+                important2: 0,
                 someDate: i%4 == 0
                     ? undefined
                     : Date.now() + (i*Math.floor(Math.random()*(60*60*24*100))),

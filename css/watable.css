@@ -4,7 +4,7 @@
 
 .watable * {
   white-space: nowrap;
-  font-size: 8pt !important;
+  font-size: 8pt ;
 }
 
 .watable.table {
