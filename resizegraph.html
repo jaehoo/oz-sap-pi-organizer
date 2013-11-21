@@ -40,9 +40,10 @@
   }
 
   .resgra{
-    
     padding: 15px;
+    
     border: solid 2px #ccc;
+    height: 250px;
   }
 
   </style>
@@ -53,7 +54,9 @@
 <script type="text/javascript+protovis">
 
 
-var padding = 15;
+var padding = 15*2; // left and rigth
+var borderX = 4;
+var borderY = 2;
 
 var win= window,d = document,
     e = d.documentElement,
@@ -67,11 +70,21 @@ function getDimensions(){
 
   console.log('dimensions');
 /* Sizing and scales. */
-    w = (win.innerWidth || e.clientWidth || g.clientWidth)-(padding*2);
-    h = 250;
+    w = (win.innerWidth || e.clientWidth || g.clientWidth)-padding-borderX;
+    //h = (win.innerHeight || e.clientHeight || g.clientHeight)-padding-borderY;
+    h = 220-padding-borderY;
     //x = function(x){ console.info("x:"+x); fx = pv.Scale.linear(0, 100).range(0, w); return fx(x); }
     x = pv.Scale.linear(0, 100).range(0, w);
-    y = pv.Scale.linear(0, 100).range(0, h);
+    //y = pv.Scale.linear(0, 100).range(0, h);
+    y = function(d) {
+
+        res = pv.Scale.linear(0, 100).range(0, h);
+        posy = res(d);
+        console.info("y:"+d+" fy:"+posy);
+
+        return posy;
+       
+    }
     //y = pv.Scale.ordinal(pv.range(10)).splitBanded(0, h, 4/5);
 
     //x = pv.Scale.ordinal(categories).split(0, w);
@@ -88,7 +101,7 @@ function getDimensions(){
     console.info("-- x:"+x(1)+" y:"+y(1));*/
 
   console.info("-- w:"+w +" h:"+h);
-  console.info("-- x:"+x(1)+" y:"+y(1));
+  console.info("-- x:"+x(1)+" y:"+y(10));
 
 }
 
@@ -107,14 +120,19 @@ function createSVG(){
       //.top(0)
       ;
 
+      var linePoints =[10, 20, 30, 50, 10]
 
   var line= vis.add(pv.Line)
   .segmented(true)
-    .data([5, 1.2, 2,1.3])
-    .top(function(d) d * y(d))
-    .left(function(d) x(d) )
-    .strokeStyle(function(d) "hsl(" + (d * 180) + ",50%,50%)")
+    .data(linePoints) //388 x188
+    //.bottom(function(d) d*2) 
+    .bottom(function(d) this.index%2?108:37.6)
+    //.left(function(d) x(d) )
+    .left(function(d)  this.index* 112.5 +38.8 ) // BETWEEN X,Y X(.)
+    //.bottom(function(d) 1*3 )
+    .strokeStyle(function(d) "hsl(" + (d * 3) + ",50%,50%)")
     .interpolate("step-after");
+
       /*.segmented(false)
       .data([0, 50,50,80,90,249])
       .bottom(function(d) d )
@@ -123,7 +141,7 @@ function createSVG(){
       .interpolate("step-after");*/
 
   var dots = vis.add(pv.Dot)
-      .data([[10,100],[50, 50], [90, 50]])
+      .data([[10,20],[50, 50], [90, 100]])
       .left(function(d) x(d[0]))
       //.bottom(function(d) d[0]);
       //.left(function(d) d[0] * 150)
