@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/vendor/d3.v3.min.js"></script>
+<title>Full-screen SVG</title>
+</head>
+<style type="text/css">
+body{
+    margin: 0;
+}
+#viz{
+    width: 90%;
+    height: 90%;
+}
+.container{
+	width: 300px;
+	height: 300px;
+}
+
+</style>
+<body>  
+
+<div class="container">
+	<div id="viz"></div>
+</div>
+
+
+
+<script type="text/javascript">
+
+var vizSVG = d3.select("#viz")
+    .append("svg:svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", "0 0 800 600");
+    
+vizSVG.append("svg:circle")
+    .attr("cx", 400)
+    .attr("cy", 300)
+    .attr("r", 250)
+    .attr("fill", "aliceblue")
+    .attr("stroke", "dodgerblue");
+
+</script>
+   
+</body>
+</html>
