@@ -266,10 +266,15 @@ OZ.sapOrganizer.createDetailBox = function(data){
     var item = data.row;
 
     var nBox=  $('<article>', { id: "elDetail"+item.id , class: 'detailScenario boxHolder newBox'});
-    var iclose = $('<a class="iclose ico-close"></a>');
+    var iclose = $('<ul class="itemMenu"><li><a class="iclose ico-close"></a></li></ul>');
 
-    var titleItem = $('<div>', { class: 'itemHead' }).append(
-        '<span>'+item.track+'<a>'+item.aris+'</a></span>');
+    var titleItem = $('<div>', { class: 'itemHead' });
+        titleItem.append(iclose);
+        titleItem.append('<span >'+item.track+'</span>'+'<div class="lblid"><a>'+item.aris+'</a>'
+        +'<ul class="itemMenuv"><li><a class="iclose ico-plus"></a></li></ul>'
+        +'</div>');
+
+    
     
     // console.info(data);
     
@@ -331,7 +336,7 @@ OZ.sapOrganizer.createDetailBox = function(data){
         }
     }
 
-    nBox.append( iclose );
+    //nBox.append( iclose );
     nBox.append( titleItem );
     addItems( entries );
     

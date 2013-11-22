@@ -113,7 +113,7 @@ header
 
 .menu
   display inline-block
-  margin 0
+  margin 3px 0
   padding 5px 0 3px
   white-space nowrap
   float right
@@ -266,6 +266,8 @@ td.hovered
     width 100%
     margin-bottom 5px
 
+.dtHolder
+  display normal  
 
 .dsnd, .drcv, .dpi 
   > h3
@@ -301,20 +303,6 @@ td.hovered
     border-right 1px solid #ccc
     border-left 1px solid #ccc*/
 
-.iclose
-  cursor pointer
-  display block
-  float right
-  font-size 7pt
-  padding 5px
-
-.iclose:hover
-  //color #FF6036
-  background-color #777
-  color #fff
-  text-decoration none
-  border-radius 50%
-
 
 
   
@@ -329,16 +317,59 @@ td.hovered
 
 .itemHead
   margin 0 0 3px
-
+  overflow hidden
+  
   span
     color gray
     font-size 1.8 em
 
-    a,  a:hover
-      font-size 13 pt
-      text-decoration none
-      vertical-align middle
+  .lblid 
+    > a, > a:hover
+      background linear-gradient( #52A8E8, #377AD0)
+      border-color #4081AF #2E69A3 #20559A
+      border-radius 16px
+      border-style solid
+      border-width 1px
+      box-shadow 0 1px 0 0 #72B9EB inset, 0 1px 2px 0 #B3B3B3
+      color #FFFFFF
+      font 9pt "lucida grande",sans-serif
       padding 0 10px
+      text-decoration none
+      text-shadow 0 -1px 1px #3275BC
+      vertical-align middle
+
+.itemMenu, .itemMenuv
+  float right
+  overflow hidden
+  
+  > li 
+    display inline-block
+    margin 0 3pt
+
+  .iclose, .iexpand 
+    color #aaa
+    cursor pointer
+    display block
+    font-size 7pt
+    line-height 15pt
+    text-align center
+    width 15pt
+
+  .iclose:hover, .iexpand:hover
+    //color #FF6036
+    //background-color #777
+    //border-radius 50%
+    color c_texto
+    text-decoration none
+
+  
+
+.dtbtn
+  background red
+  position absolute
+  top 90%
+  left 20%
+  border 1px solid blue
 
 
 #tabpage_2
@@ -364,6 +395,7 @@ td.hovered
   width 100%*/
 
 
+
 @media screen and (min-width:768px)
   .detailScenario
     .dsnd, .drcv, .dpi
@@ -380,4 +412,5 @@ td.hovered
   header 
     .logo
       float left
-      
+  .menu 
+    margin 0

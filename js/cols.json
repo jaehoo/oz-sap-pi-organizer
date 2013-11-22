@@ -69,25 +69,24 @@
             "tooltip": "=P",
             "filterTooltip": "¬¬",
             "unique": true
-        },
-         "important": {
-                "index": 5, 
-                "type": "number", 
-                "friendly": "<i class='icon-user'></i>",
-                "format": "<a href='#' class='X'>{0}</a>"
-        },
+        },         
         "showDetail": {
-            "index": 5,
+            "index": 2,
             "type": "string",
             "friendly": "Detail",
             "format": "<a id='#sa{0}' class='detail ico-info'></a>"
         },
+        "important": {
+            "index": 2, 
+            "type": "number", 
+            "friendly": "<i class='icon-user'></i>",
+            "format": "<a href='#' class='X'>{0}</a>"
+        },    
         "aris": {
             "index": 2,
-            "friendly": "ID ARIS",
+            "friendly": "ARIS",
             "type": "string",
             "placeholder": false,
-            "hidden": true,
             "filterTooltip": false
         },
         "track": {
@@ -97,17 +96,17 @@
         },
         "mode": {
             "index": 3,
-            "friendly": "Sync or Async",
+            "friendly": "Type (A/S)",
             "type": "string"
         },
         "sysSender": {
             "index": 4,
-            "friendly": "Sys Sender",
+            "friendly": "Sender",
             "type": "string"
         },
         "sysReceiver": {
             "index": 5,
-            "friendly": "Sys Receiver",
+            "friendly": "Receiver",
             "type": "string"
         },
         "adapSender": {
@@ -122,80 +121,95 @@
             "tooltip": "Used Adapter Receiver",
             "type": "string"
         },
-
+        
         "senderContact": {
             "index": 10,
             "friendly": "Responsable Origen",
+            
             "type": "string"
         },
         "receiverContact": {
             "index": 11,
             "friendly": "Responsable Destino",
+            
             "type": "string"
         },
         "bsSender": {
             "index": 12,
             "friendly": "BS Sender",
+            
             "type": "string"
         },
         "bsReceiver": {
             "index": 13,
             "friendly": "BS Receiver",
+            
             "type": "string"
         },
         "scenarioID": {
             "index": 14,
             "friendly": "Integration Scenario",
+            
             "type": "string"
         },
         "swcSender": {
             "index": 15,
             "friendly": "SWC Sender",
+            
             "type": "string"
         },
         "swcReceiver": {
             "index": 16,
             "friendly": "SWC Sender",
+            
             "type": "string"
         },
         "nsSender": {
             "index": 17,
             "friendly": "Namespace Sender",
+            
             "type": "string"
         },
         "nsReciver": {
             "index": 18,
             "friendly": "Namespace Receiver",
+            
             "type": "string"
         },
         "siSender": {
             "index": 19,
             "friendly": "Interface Sender",
+            
             "type": "string"
         },
         "siReceiver": {
             "index": 20,
             "friendly": "Interface Receiver",
+            
             "type": "string"
         },
         "ccSender": {
             "index": 21,
             "friendly": "CC Sender",
+            
             "type": "string"
         },
         "ccReceiver": {
             "index": 22,
             "friendly": "CC Receiver",
+            
             "type": "string"
         },
         "fsOwner": {
             "index": 23,
             "friendly": "Functional Spec",
+            
             "type": "string"
         },
         "tsOwner": {
             "index": 24,
             "friendly": "Tech Spech",
+            
             "type": "string"
         }
     }]
