@@ -560,7 +560,7 @@ td.hovered {
   margin-bottom: 5px;
 }
 .dtHolder {
-  display: normal;
+  display: none;
 }
 .dsnd > h3,
 .drcv > h3,
@@ -650,13 +650,11 @@ td.hovered {
 }
 .itemMenu > li,
 .itemMenuv > li {
-  display: inline-block;
-  margin: 0 3pt;
+  display: block;
+  margin: 0 3pt 7pt;
 }
-.itemMenu .iclose,
-.itemMenuv .iclose,
-.itemMenu .iexpand,
-.itemMenuv .iexpand {
+.itemMenu .micons,
+.itemMenuv .micons {
   color: #aaa;
   cursor: pointer;
   display: block;
@@ -665,10 +663,8 @@ td.hovered {
   text-align: center;
   width: 15pt;
 }
-.itemMenu .iclose:hover,
-.itemMenuv .iclose:hover,
-.itemMenu .iexpand:hover,
-.itemMenuv .iexpand:hover {
+.itemMenu .micons:hover,
+.itemMenuv .micons:hover {
   color: #666;
   text-decoration: none;
 }

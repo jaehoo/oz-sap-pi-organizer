@@ -265,16 +265,30 @@ OZ.sapOrganizer.createDetailBox = function(data){
     //console.info('#elDetail'+data.row.id);
     var item = data.row;
 
-    var nBox=  $('<article>', { id: "elDetail"+item.id , class: 'detailScenario boxHolder newBox'});
-    var iclose = $('<ul class="itemMenu"><li><a class="iclose ico-close"></a></li></ul>');
+    var nBox = $('<article>', { id: "elDetail"+item.id , class: 'detailScenario boxHolder newBox'});
+    var rigthItemMenu = $('<ul class="itemMenu"></ul>');
+
+
+    var opClose = $('<li>');
+    var opPlus = $('<li>');
+
+    var iclose = $('<a class="micons ico-close"></a>');
+    var icoPlus = $('<a class="micons ico-plus"></a>');
+
+    opClose.append(iclose);
+    opPlus.append(icoPlus);
+
+
+    rigthItemMenu.append(opClose);
+    rigthItemMenu.append(opPlus);
+
+    var detailBox = $('<div class="dtHolder"></div>')
 
     var titleItem = $('<div>', { class: 'itemHead' });
-        titleItem.append(iclose);
-        titleItem.append('<span >'+item.track+'</span>'+'<div class="lblid"><a>'+item.aris+'</a>'
-        +'<ul class="itemMenuv"><li><a class="iclose ico-plus"></a></li></ul>'
-        +'</div>');
-
-    
+        titleItem.append( rigthItemMenu );
+        titleItem.append('<span>'+item.track+'</span>'+'<div class="lblid"><a>'+item.aris+'</a>'+'</div>');
+        //+'<ul class="itemMenuv"><li><a class="micons ico-plus"></a></li></ul>'
+        
     
     // console.info(data);
     
@@ -332,12 +346,13 @@ OZ.sapOrganizer.createDetailBox = function(data){
                     //console.log(key, value);
                 });    
 
-            nBox.append(item);
+            detailBox.append(item);
         }
     }
 
-    //nBox.append( iclose );
+    
     nBox.append( titleItem );
+    nBox.append( detailBox );
     addItems( entries );
     
     // Events
@@ -345,6 +360,14 @@ OZ.sapOrganizer.createDetailBox = function(data){
         //console.info('Close me!');
         nBox.slideAndFadeToggleB();
     });
+
+    icoPlus.on('click', function(){
+        //detailBox.slideAndFadeToggleC(150);
+        detailBox.fadeThenSlideToggle(250);
+        console.log('Clieck plus!');
+    });
+
+
 
     return nBox;
 
@@ -745,7 +768,7 @@ jQuery.fn.slideAndFadeToggleB = function(speed, easing, callback) {
 
     if (this.is(":hidden")) {
         //this.animate({ left: "0px"});
-        this.css('display', '');
+        //this.css('display', '');
         this.animate({ opacity: 1, left: "0px"}, 150,function() {$(this).css('display', '');});
 
     } else {
@@ -762,6 +785,24 @@ jQuery.fn.slideAndFadeToggleB = function(speed, easing, callback) {
         });
     }
 };
+
+jQuery.fn.slideAndFadeToggleC = function(speed, easing, callback) {
+
+    if (this.is(":hidden")) {
+        //this.css('display', '');
+        //this.animate({ opacity: 1, left: "0px"}, 150,function() {$(this).css('display', '');});
+        //$(this).css('display', '');
+        this.animate({ opacity: 1, top: "0px", height: 'toggle'}, speed, function() {/* Animation complete.*/});
+
+
+
+    } else {        
+        this.animate({ opacity: 0, left: "100px"}, speed-50,function() {
+            $(this).slideUp(300, function(){});            
+        });
+    }
+};
+
 
 
 /**********/
