@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel='stylesheet' href='css/watable.css'/>
+    <link rel='stylesheet' href='css/tipsy.css'/>
 
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -96,8 +97,8 @@
                 <ul class="menu">
 
                     <!-- <li><a href="#">C</a></li>-->
-                    <!-- <li><a href="#">O</a></li> -->
-                    <li><a id="boxIndicator2" class="ico-share"></a></li>
+                    <!--<li><a id="example-fade" href="#" original-title="Hello World">Hover over me</a></li> -->
+                    <li><a id="graph_pi"class="ico-share" original-title="Show Interface Chart"></a></li>
                     <li><a id="op_fast_search" href="#" class="ico-lightning"></a></li>
                     <li><a class="ico-list2"></a></li>
                     <!-- <li><a href="#" class="icon-list"></a></li>-->
@@ -246,16 +247,17 @@
 
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script>window.d3 || document.write('<script src="js/vendor/d3.v3.min.js"><\/script>')</script>
-
-
-
-
+    
+    
     <script src="js/vendor/bootstrap.min.js"></script>
 
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
     <script src="js/jquery.watable.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.tipsy.js" type="text/javascript" charset="utf-8"></script>
+
+    
 
     <script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
 
@@ -287,6 +289,10 @@
 
     });*/
 
+    $('#graph_pi').tipsy({fade: true,gravity: $.fn.tipsy.autoNS});
+
+    
+    //$('#example-fade').tipsy({fade: true});
 
 });
 
