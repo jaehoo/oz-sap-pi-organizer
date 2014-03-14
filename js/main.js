@@ -3,18 +3,48 @@ var OZ = OZ || {};
 OZ.sapOrganizer = OZ.sapOrganizer || {};
 
 
-OZ.sapOrganizer.refresh = function(){
-    console.info("reload ¬¬");
+OZ.sapOrganizer.refresh = function(waTable, headerId){
+
+    
+    console.info("reload ¬¬" + waTable.viewMode);
 
     var data = {};
-    data.cols = OZ.sapOrganizer.getHeader(1);
+    data.cols = OZ.sapOrganizer.getHeader(waTable.viewMode);
     data.rows = OZ.sapOrganizer.getBody();
     var tableData = OZ.sapOrganizer.jsonFormat(data);
-    waTable.setData(tableData, true);
+    waTable.setData(tableData, false);
 
 
 }
 
+OZ.sapOrganizer.toogleTableView= function(waTable){
+
+    console.info("set toggle button");
+    document.getElementById("btnBuild").onclick= function(){
+
+    var val=this.getAttribute("value");
+    var headerId;
+    //console.info("TEST:"+val);
+
+    if(val == "min"){
+        this.innerHTML='Summary';
+        this.setAttribute('value','full');
+        waTable.viewMode=1;
+    }
+    else{
+        this.innerHTML='View All';
+        this.setAttribute('value','min');
+        waTable.viewMode=2;
+    }
+    
+    var data =waTable.getData(false);;
+    data.cols = OZ.sapOrganizer.getHeader(waTable.viewMode);
+    waTable.setData(data, false);
+
+
+    };
+
+};
 
 /**/
 OZ.sapOrganizer.getSummary = function (){
@@ -26,8 +56,8 @@ OZ.sapOrganizer.getSummary = function (){
     data.cols = OZ.sapOrganizer.getHeader(0);
     data.rows = OZ.sapOrganizer.getBody();
 
-    console.info(data.cols);
-    console.info(data.rows);
+    //console.info(data.cols);
+    //console.info(data.rows);
 
     var tableData = OZ.sapOrganizer.jsonFormat(data);
 
@@ -42,7 +72,7 @@ OZ.sapOrganizer.getDetail = function (){
 
     var data = {};
     
-    data.cols = OZ.sapOrganizer.getHeader(1);
+    data.cols = OZ.sapOrganizer.getHeader(2);
     data.rows = OZ.sapOrganizer.getBody();
 
     console.info(data.cols);
@@ -50,9 +80,7 @@ OZ.sapOrganizer.getDetail = function (){
 
     var tableData = OZ.sapOrganizer.jsonFormat(data);
 
-    tableData.el="#dynDeatilTable";
-
-    OZ.sapOrganizer.buildTable(tableData);
+    return  tableData;
 
 }
 
@@ -60,7 +88,7 @@ OZ.sapOrganizer.getDetail = function (){
 
 OZ.sapOrganizer.getBody = function (){
 
-    console.log("Get detail page ...");
+    console.log("Get body page ...");
 
     var body;
 
@@ -88,7 +116,7 @@ OZ.sapOrganizer.getBody = function (){
 
 OZ.sapOrganizer.getHeader = function (id){
 
-    console.log('Getting header...');
+    console.debug('Getting header...');
 
     var header;
 
@@ -340,10 +368,11 @@ OZ.sapOrganizer.createDetailBox = function(data){
             item.append('<h3>'+ entries[i].title +'</h3>');
 
             $.each(entries[i].values, function(key, value){
+                //console.log(key, value);
                 if(value.length!=0){
                     item.append('<p><strong>'+key+'</strong><label>'+value+'</label></p>');    
                 }
-                    //console.log(key, value);
+                    
                 });    
 
             detailBox.append(item);
@@ -393,6 +422,7 @@ OZ.sapOrganizer.buildTable= function(data){
         //url: 'js/data.json',    //Url to a webservice if not setting data manually as we do in this example
         //urlData: { report:1 }     //Any data you need to pass to the webservice
         //urlPost: true             //Use POST httpmethod to webservice. Default is GET.
+        viewMode:1,                 // 1 Summary, 2 Full
         types: {                    //Following are some specific properties related to the data types
             string: {
                 //filterTooltip: "Giggedi..."    //What to say in tooltip when hoovering filter fields. Set false to remove.
@@ -499,9 +529,20 @@ OZ.sapOrganizer.buildTable= function(data){
 
     //Example event handler triggered by the custom refresh link above.
     $('body').on('click', '.refresh', function(e) {
+
         e.preventDefault();
-        var data = waTable.getData();
-        waTable.setData(data, true);
+        OZ.sapOrganizer.refresh(waTable);
+
+        /**var data ={};
+        data.cols = OZ.sapOrganizer.getHeader(1);
+        data.rows = OZ.sapOrganizer.getBody();
+        var ndata  = OZ.sapOrganizer.jsonFormat(data);
+
+        //var data = waTable.getData();
+        waTable.setData(ndata, false);**/
+
+
+
     });
     //Example event handler triggered by the custom export links above.
     $('body').on('click', '.export_checked, .export_filtered, .export_all', function(e) {
@@ -517,6 +558,7 @@ OZ.sapOrganizer.buildTable= function(data){
     });
 
 
+    OZ.sapOrganizer.toogleTableView(waTable);   
 
 
 }

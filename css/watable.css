@@ -45,7 +45,11 @@
 
 .watable .columnpicker li,
 .watable .actions li {
-  padding-left: 5px;
+  //padding-left: 0px;
+}
+
+.watable li input> .checkbox{
+  padding-left: 3px;
 }
 
 .watable .btn-toolbar {

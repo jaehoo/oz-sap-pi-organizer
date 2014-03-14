@@ -212,6 +212,71 @@
             
             "type": "string"
         }
+    },
+    {
+        "id": {
+            "index": 1,
+            "friendly": "ID",
+            "type": "string",
+            "placeHolder": "Self explained",
+            "tooltip": "=P",
+            "filterTooltip": "¬¬",
+            "unique": true
+        },         
+        "track": {
+            "index": 2,
+            "friendly": "Track",
+            "type": "string"
+        },
+        "aris": {
+            "index": 3,
+            "friendly": "ARIS",
+            "type": "string",
+            "placeholder": false,
+            "filterTooltip": false
+        },
+        "desc": {
+            "index": 3,
+            "friendly": "Description",
+            "type": "string",
+            "placeholder": false,
+            "filterTooltip": false
+        },
+
+        "mode": {
+            "index": 4,
+            "friendly": "(A/S)",
+            "type": "string"
+        },
+        "sysSender": {
+            "index": 5,
+            "friendly": "Sender",
+            "type": "string"
+        },
+        "sysReceiver": {
+            "index": 6,
+            "friendly": "Receiver",
+            "type": "string"
+        },
+        "adapSender": {
+            "index": 6,
+            "friendly": "Adapter SND",
+            "tooltip": "Used Adapter Sender",
+            "type": "string"
+        },
+        "adapReceiver": {
+            "index": 7,
+            "friendly": "Adapter RCV",
+            "tooltip": "Used Adapter Receiver",
+            "type": "string"
+        },
+        "showDetail": {
+            "index": 7,
+            "type": "string",
+            "friendly": "Detail",
+            "format": "<a id='#sa{0}' class='detail ico-info'></a>"
+        }
+       
     }]
 
 }

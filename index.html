@@ -100,7 +100,7 @@
                     <!--<li><a id="example-fade" href="#" original-title="Hello World">Hover over me</a></li> -->
                     <li><a id="graph_pi"class="ico-share" original-title="Show Interface Chart"></a></li>
                     <li><a id="op_fast_search" href="#" class="ico-lightning"></a></li>
-                    <li><a class="ico-list2"></a></li>
+                    <li><a id ="showDataTable" class="ico-list2"></a></li>
                     <!-- <li><a href="#" class="icon-list"></a></li>-->
 
 
@@ -111,7 +111,7 @@
             <div class="tabContentMenu">
 
 
-                <a id='btnBuild' class="btnAdvanced btn btn-default">Summary</a>
+                <a id='btnBuild' class="btnAdvanced btn btn-default" value="min">View All</a>
                 <a id='testAnimate' class="btn btn-default btnAdvanced">animate</a>
 
                 <div>
@@ -271,7 +271,10 @@
         .enter().append("p")
         .text(function(d) { return "I’m number " + d + "!"; });
     //OZ.sapOrganizer.getSummary();
-    OZ.sapOrganizer.getDetail();
+    var tableData = OZ.sapOrganizer.getDetail();
+    tableData.el="#dynDeatilTable";
+
+    OZ.sapOrganizer.buildTable(tableData);
     OZ.sapOrganizer.initBox();
 
     mbox=$('#magic_box');
@@ -290,11 +293,32 @@
     });*/
 
     $('#graph_pi').tipsy({fade: true,gravity: $.fn.tipsy.autoNS});
+    
+var testAlrt= function showDataTable(){
+
+
+    alert("Show table 2");
+}
+
+    document.getElementById("showDataTable").onclick = testAlrt;
+
+    /*document.getElementById("btnBuild").onclick = function(){
+        this.innerHtml="hide";
+        alert("Show table 2");
+    };*/
+
+    
+    //document.getElementById("btnBuild").onclick =  OZ.sapOrganizer.toogleTableView;
+
+
+
+
 
     
     //$('#example-fade').tipsy({fade: true});
 
 });
+
 
 
 
