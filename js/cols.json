@@ -218,28 +218,26 @@
             "index": 1,
             "friendly": "ID",
             "type": "string",
-            "placeHolder": "Self explained",
-            "tooltip": "=P",
-            "filterTooltip": "¬¬",
+            "placeHolder": "#",
+            "filterTooltip": "¬_¬",
             "unique": true
         },         
         "track": {
             "index": 2,
             "friendly": "Track",
+            "placeHolder": "",
             "type": "string"
         },
         "aris": {
             "index": 3,
             "friendly": "ARIS",
             "type": "string",
-            "placeholder": false,
-            "filterTooltip": false
+            "filterTooltip": true
         },
         "desc": {
             "index": 3,
             "friendly": "Description",
             "type": "string",
-            "placeholder": false,
             "filterTooltip": false
         },
 
@@ -261,7 +259,6 @@
         "adapSender": {
             "index": 6,
             "friendly": "Adapter SND",
-            "tooltip": "Used Adapter Sender",
             "type": "string"
         },
         "adapReceiver": {

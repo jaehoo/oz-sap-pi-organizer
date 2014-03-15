@@ -1,6 +1,6 @@
 @import "nib"
-@import 'nib/vendor'
-@import 'nib/gradients'
+//@import 'nib/vendor'
+//@import 'nib/gradients'
 
 c_texto = #666
 c_pholder = #555
@@ -134,7 +134,7 @@ header
   text-shadow 0 .5pt .5pt #777
 
 
-.ico-list2:hover
+#showDataTable:hover, #showDataTable.showDataTable
     color red
 
 
@@ -236,10 +236,17 @@ td.hovered
   border-bottom-right-radius: 4px
   border-bottom-left-radius: 4px
   padding 0.8em
-  background: linear-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed))
+  //background: linear-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed))
+  background-image: linear-gradient(to bottom, #FAFAFA 0%, #FBFBFB 100%)
   margin: 0
   color #333
   box-shadow: 0px 1px .6pt  #CCC
+
+.selectedBox
+    /*background-color #fafafa*/
+    border 1px solid #bbb
+    background-image: linear-gradient(to bottom, #F2FFDC 0%, #F2FFB7 100%)
+  
 
 #btnBuild
   min-width: 5em
@@ -327,6 +334,8 @@ td.hovered
   .lblid 
     > a, > a:hover
       background linear-gradient( #52A8E8, #377AD0)
+
+
       border-color #4081AF #2E69A3 #20559A
       border-radius 16px
       border-style solid
@@ -415,3 +424,16 @@ td.hovered
       float left
   .menu 
     margin 0
+
+ 
+#scrollUp 
+  bottom: 20px
+  right: 20px
+  height: 38px
+  width: 38px
+  background url(../img/top.png) no-repeat;
+  opacity .9
+
+
+#dataGrid
+  display none

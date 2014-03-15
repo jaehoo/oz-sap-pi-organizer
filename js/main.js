@@ -75,8 +75,8 @@ OZ.sapOrganizer.getDetail = function (){
     data.cols = OZ.sapOrganizer.getHeader(2);
     data.rows = OZ.sapOrganizer.getBody();
 
-    console.info(data.cols);
-    console.info(data.rows);
+    //console.info(data.cols);
+    //console.info(data.rows);
 
     var tableData = OZ.sapOrganizer.jsonFormat(data);
 
@@ -310,7 +310,7 @@ OZ.sapOrganizer.createDetailBox = function(data){
     rigthItemMenu.append(opClose);
     rigthItemMenu.append(opPlus);
 
-    var detailBox = $('<div class="dtHolder"></div>')
+    var detailBox = $('<div class="dtHolder"></div>');
 
     var titleItem = $('<div>', { class: 'itemHead' });
         titleItem.append( rigthItemMenu );
@@ -390,10 +390,11 @@ OZ.sapOrganizer.createDetailBox = function(data){
         nBox.slideAndFadeToggleB();
     });
 
-    icoPlus.on('click', function(){
+    icoPlus.on('click', function(e){
         //detailBox.slideAndFadeToggleC(150);
         detailBox.fadeThenSlideToggle(250);
         console.log('Clieck plus!');
+        e.stopPropagation();
     });
 
 
@@ -412,12 +413,12 @@ OZ.sapOrganizer.buildTable= function(data){
 
     //An example with all options.
     var waTable = el.WATable({
-        pageSize: 8,                //Sets the initial pagesize
-        filter: false,               //Show filter fields
+        pageSize: 10,                //Sets the initial pagesize
+        filter: true,               //Show filter fields
         columnPicker: false,         //Show the columnPicker button
-        pageSizes: [1,5,8,12,200],  //Set custom pageSizes. Leave empty array to hide button.
+        pageSizes: [5,10,20,50,100,200,500],  //Set custom pageSizes. Leave empty array to hide button.
         hidePagerOnEmpty: true,     //Removes the pager if data is empty.
-        checkboxes: true,           //Make rows checkable. (Note. You need a column with the 'unique' property)
+        checkboxes: false,           //Make rows checkable. (Note. You need a column with the 'unique' property)
         preFill: true,              //Initially fills the table with empty rows (as many as the pagesize).
         //url: 'js/data.json',    //Url to a webservice if not setting data manually as we do in this example
         //urlData: { report:1 }     //Any data you need to pass to the webservice
@@ -486,6 +487,9 @@ OZ.sapOrganizer.buildTable= function(data){
                 else{
 
                     var detailBox= OZ.sapOrganizer.createDetailBox(data);
+                    OZ.sapOrganizer.selDetBox(detailBox);
+
+
                     $(".popcontainer").prepend(detailBox);
                     detailBox.fadeThenSlideToggle(500);
                 }
@@ -1011,5 +1015,28 @@ OZ.sapOrganizer.initBox = function(){
                 //zebraRows('.visible:even td', 'odd');
             });
 });
-}
 
+
+OZ.sapOrganizer.selDetBox = function(o){
+
+    var selClass='selectedBox';
+
+    o.on( "click", function() {
+
+        //console.log("El clicked!");
+        //console.log(o.hasClass(selClass));
+
+        if(o.hasClass(selClass)){
+            o.removeClass(selClass);
+        }
+        else{
+            o.addClass(selClass);
+        }   
+        e.stopPropagation();
+            
+    });
+    
+
+};
+
+}

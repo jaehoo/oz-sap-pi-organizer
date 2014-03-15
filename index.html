@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css">-->
     <!--<link rel='stylesheet' href="css/bootstrap-combined.min.css"/>-->
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel='stylesheet' href='css/watable.css'/>
     <link rel='stylesheet' href='css/tipsy.css'/>
@@ -83,9 +83,11 @@
         </header>
 
 
-        
+
 
         <div class="boxHolder">
+
+ 
 
             <div class="tabs">
                 <div class="magic_toolbar">
@@ -108,18 +110,23 @@
 
             </div>
 
-            <div class="tabContentMenu">
+
+           <section id="dataGrid">
+
+                <div class="tabContentMenu">
 
 
-                <a id='btnBuild' class="btnAdvanced btn btn-default" value="min">View All</a>
-                <a id='testAnimate' class="btn btn-default btnAdvanced">animate</a>
-
-                <div>
+                    <a id='btnBuild' class="btnAdvanced btn btn-default" value="min">View All</a>
+                    <a id='testAnimate' class="btn btn-default btnAdvanced">animate</a>
+                    <a id='testScroll' class="btnAdvanced btn btn-default">Scroll</a>
 
                 </div>
 
+                <div id="dynDeatilTable"></div>
 
-            </div>
+            </section>
+
+            
 
 
 
@@ -127,9 +134,9 @@
                     <div id="dynTable"></div>
                 </div> -->
 
-                <div  id="tabpage_2">
-                    <div id="dynDeatilTable"></div>
-                </div>
+                
+                    
+                
 
 
             </div>
@@ -210,7 +217,7 @@
 
             <!--<h1>Hello, world!</h1>-->
             <!--<p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>-->
-            <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            <p><a  class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
         </div>
     </div>
 
@@ -242,8 +249,11 @@
     </div> <!-- /container -->
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script> -->
+
+    <script src="js/vendor/jquery-1.8.3.min.js"></script
+    
 
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script>window.d3 || document.write('<script src="js/vendor/d3.v3.min.js"><\/script>')</script>
@@ -256,15 +266,17 @@
 
     <script src="js/jquery.watable.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/jquery.tipsy.js" type="text/javascript" charset="utf-8"></script>
-
     
-
     <script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/vendor/animatescroll.js"></script>
+    <script src="js/vendor/jquery.scrollUp.min.js"></script>
 
     <script type="text/javascript">
 
 
     $(document).ready( function() {
+
+
 
         d3.select("body").selectAll("p")
         .data([4, 8, 15, 16, 23, 42])
@@ -276,6 +288,7 @@
 
     OZ.sapOrganizer.buildTable(tableData);
     OZ.sapOrganizer.initBox();
+    OZ.sapOrganizer.selDetBox($('#elDetail0'));
 
     mbox=$('#magic_box');
     mbox.val('');
@@ -294,13 +307,42 @@
 
     $('#graph_pi').tipsy({fade: true,gravity: $.fn.tipsy.autoNS});
     
-var testAlrt= function showDataTable(){
+
+    var btnShowDataTable = document.getElementById("showDataTable");
+        
+
+    var testAlrt= function showDataTable(){
+        console.debug("Show table");
+
+        var el= $('#dataGrid');
+        var rClass='showDataTable';
+
+        if (el.is(":hidden")) {
+                //document.querySelector('#box').classList.add('wrap');
+            btnShowDataTable.classList.add(rClass); 
+            el.fadeThenSlideToggle();
+
+        }
+        else{
+            btnShowDataTable.classList.remove(rClass); 
+            el.fadeThenSlideToggle();
+        }
+
+    };
+
+    btnShowDataTable.onclick = testAlrt;
+
+    
+
+    
 
 
-    alert("Show table 2");
-}
+    
 
-    document.getElementById("showDataTable").onclick = testAlrt;
+
+
+        
+    
 
     /*document.getElementById("btnBuild").onclick = function(){
         this.innerHtml="hide";
@@ -309,13 +351,45 @@ var testAlrt= function showDataTable(){
 
     
     //document.getElementById("btnBuild").onclick =  OZ.sapOrganizer.toogleTableView;
+    //$('#example-fade').tipsy({fade: true});
 
-
-
-
+    /*$('.tabContentMenu').localScroll({
+        target:'#targetx',
+        queue:true,
+        duration:1000,
+        hash:true,
+        onBefore:function( e, anchor, $target ){
+                    console.info("Scroll this");
+                }
+    });*/
 
     
-    //$('#example-fade').tipsy({fade: true});
+        //$('#section-2').animatescroll({scrollSpeed:2000,easing:'easeInOutBack'});
+
+        document.getElementById("testScroll").onclick = function(){
+          $('.popcontainer').animatescroll({scrollSpeed:800, padding:50});  
+        };
+
+        
+    
+    $.scrollUp({
+                scrollName: 'scrollUp', // Element ID
+                scrollDistance: 300, // Distance from top/bottom before showing element (px)
+                scrollFrom: 'top', // 'top' or 'bottom'
+                scrollSpeed: 300, // Speed back to top (ms)
+                easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+                animation: 'fade', // Fade, slide, none
+                animationInSpeed: 200, // Animation in speed (ms)
+                animationOutSpeed: 200, // Animation out speed (ms)
+                scrollText: 'Scroll to top', // Text for element, can contain HTML
+                scrollTitle: false, // Set a custom <a> title if required. Defaults to scrollText
+                scrollImg: true, // Set true to use image
+                activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+                zIndex: 2147483647 // Z-Index for the overlay
+            });
+
+        
+        
 
 });
 
