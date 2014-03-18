@@ -143,6 +143,8 @@ OZ.sapOrganizer.getHeader = function (id){
 
 
 
+
+
 OZ.sapOrganizer.getData = function (){
 
     console.log('Calling... getData');
@@ -385,15 +387,14 @@ OZ.sapOrganizer.createDetailBox = function(data){
     addItems( entries );
     
     // Events
-    iclose.on('click',function(){
-        //console.info('Close me!');
+    iclose.on('click',function(e){
         nBox.slideAndFadeToggleB();
+        e.stopPropagation();
+
     });
 
     icoPlus.on('click', function(e){
-        //detailBox.slideAndFadeToggleC(150);
         detailBox.fadeThenSlideToggle(250);
-        console.log('Clieck plus!');
         e.stopPropagation();
     });
 
@@ -464,7 +465,7 @@ OZ.sapOrganizer.buildTable= function(data){
 
             //data.event holds the original jQuery event
             
-            console.info(data);
+            //console.info(data);
             //console.info(data.column.column);
 
             if(data.column.column == 'showDetail'){
@@ -478,7 +479,7 @@ OZ.sapOrganizer.buildTable= function(data){
                 
                 //console.info(data.checked);
                 detailBox=$('#elDetail'+data.row.id);
-                console.info('exists: '+detailBox.exists() +'Is Hidden:'+detailBox.is(":hidden"));
+                //console.info('exists: '+detailBox.exists() +'Is Hidden:'+detailBox.is(":hidden"));
                 
                 if(detailBox.exists()){
                     data.event.preventDefault();
@@ -870,12 +871,157 @@ function filter(selector, query) {
     });
 }
 
+
+var boxPlaceHolders= ['Try again...'
+    , 'what you think??'
+    , 'seriously??'
+    , 'Why you so serious?'
+    , 'Bingo!!'
+    , 'finding... to Nemo XD'
+    , 'one more?'
+    , "I'll do the best..."
+    , "With great power, comes great responsibility"
+    , ];
+
+OZ.sapOrganizer.getPlaceholder = function(){
+    //console.info('getting holder..');
+    var i = Math.floor((Math.random()*boxPlaceHolders.length));
+    //console.info("return:"+i);
+    var textHolder = boxPlaceHolders[i];
+    //console.info("val:"+boxPlaceHolders[i]);
+    return textHolder;
+}
+
+
+OZ.sapOrganizer.ligthSearh = function(event){
+
+    console.info('start ligth serach');
+
+    var inputBox = $('#magic_box');
+    var boxIndicator = $('#boxIndicator');
+    var resultset = $('.resulset');
+     //var esc = $.Event("keyup", { keyCode: 27 });
+    var placeHolder = document.getElementById('magic_box');
+
+    var changePlaceholder=function(){
+        console.info('change!! :'+ placeHolder.getAttribute('placeholder'));
+        placeHolder.setAttribute('placeholder',OZ.sapOrganizer.getPlaceholder());
+    }
+
+    
+    boxIndicator.on('click', function(event){
+
+        if(inputBox.val()){
+            console.info('clear');
+            inputBox.val('');
+            toggleIcon();
+            //inputBox.trigger(esc);
+            //changePlaceholder();
+            showResulSet();
+            event.preventDefault();
+        }
+        
+
+    });
+
+    function showResulSet(){
+
+        console.info(inputBox.val().length+" : is hidden:"+resultset.is(":hidden"));
+        var length = inputBox.val().length;
+
+            if(length>=3 && resultset.is(":hidden")){
+                resultset.slideAndFadeToggle();
+            }    
+            else if(length<3 && !resultset.is(":hidden")){
+                resultset.slideAndFadeToggle();
+            }
+
+    }
+
+
+    function toggleIcon(){
+
+        if(inputBox.val()) {
+            //console.info(' NO EMPTY');
+            boxIndicator.removeClass('ico-search');
+            boxIndicator.addClass('ico-clearbox');            
+
+        }
+        else{
+            //console.info('EMPTY');
+            boxIndicator.removeClass('ico-clearbox');
+            boxIndicator.addClass('ico-search');
+            //changePlaceholder();
+            
+            inputBox.focus();
+        }
+
+    }
+
+
+    inputBox.keypress(function(e) {
+        console.log("press:"+e.keyCode);
+
+        textLen= inputBox.val().length;
+
+         if(e.charCode == 32 ){
+            e.preventDefault(); 
+            return false;
+         }
+         else if(e.keyCode == 8 && textLen == 0){
+            console.info('emp');
+            e.preventDefault(); 
+            return false;
+            //toggleIcon();    
+            
+         }
+
+        
+    });
+
+    inputBox.keyup(function(event) {
+        console.log("kup:"+event.keyCode);
+        //console.log(event.keyCode == 27);
+
+        if (event.keyCode == 27) {
+            event.preventDefault();            
+            inputBox.val('');
+            //return false;
+            toggleIcon();
+        }
+        //else if(event.keyCode == 8 || event.keyCode > 32){
+        else if(event.keyCode > 32 || event.keyCode == 8){
+            toggleIcon();    
+        }
+
+
+        //validatte
+
+        
+        var str = inputBox.val();
+        var patt = new RegExp("[\s\r\n\t\f ]+");
+        var res = patt.test(str);
+        console.info("regex:"+res);
+
+        showResulSet();
+
+
+        
+        
+    });
+
+    inputBox.change(function(e){
+        console.info('blur');
+      toggleIcon();  
+    });
+}
+
 OZ.sapOrganizer.initBox = function(){
 
     console.info("initBox");
     //zebraRows('tr:odd td', 'odd');
 
-    var e= '#dynDeatilTable table tbody tr'
+    var e= '#dynDeatilTable table tbody tr';
     var tel= $(e);
     var inputBox = $('#magic_box');
 
@@ -913,9 +1059,6 @@ OZ.sapOrganizer.initBox = function(){
                 return
 
             }    
-        
-        
-
     });
 
 
@@ -936,14 +1079,14 @@ OZ.sapOrganizer.initBox = function(){
         boxIndicator.removeClass('ico-search');
         boxIndicator.addClass('ico-clearbox');
 
-    }
-    else{
-        //console.info('EMPTY');
+        }
+        else{
+            //console.info('EMPTY');
 
-        iconLigthin.css( "color", "" );
-        boxIndicator.removeClass('ico-clearbox');
-        boxIndicator.addClass('ico-search');
-    }
+            iconLigthin.css( "color", "" );
+            boxIndicator.removeClass('ico-clearbox');
+            boxIndicator.addClass('ico-search');
+        }
 
         //if esc is pressed or nothing is entered
         if (event.keyCode == 27 || $(this).val() == '') {
@@ -1014,14 +1157,14 @@ OZ.sapOrganizer.initBox = function(){
                 $('.visible td').removeClass('odd');
                 //zebraRows('.visible:even td', 'odd');
             });
-});
-
+    });
+}
 
 OZ.sapOrganizer.selDetBox = function(o){
 
     var selClass='selectedBox';
 
-    o.on( "click", function() {
+    o.on( "click", function(e) {
 
         //console.log("El clicked!");
         //console.log(o.hasClass(selClass));
@@ -1037,6 +1180,5 @@ OZ.sapOrganizer.selDetBox = function(o){
     });
     
 
-};
-
 }
+
