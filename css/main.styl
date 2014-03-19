@@ -253,6 +253,7 @@ td.hovered
     /*background-color #fafafa*/
     border 1px solid #bbb
     background-image: linear-gradient(to bottom, #F7F4C9 0%, #F7EDC1 100%)
+    background-color #F7F4C9
   
 
 #btnBuild
@@ -339,12 +340,12 @@ td.hovered
     font-size 1.8 em
 
   .lblid 
-    > a, > a:hover
-      background linear-gradient( #52A8E8, #377AD0)
-
-
+    > a
+      overflow hidden
+      border-radius 18px
+      background-color #307DCD
+      background-image linear-gradient(#4DA1F8,#307DCD)
       border-color #4081AF #2E69A3 #20559A
-      border-radius 16px
       border-style solid
       border-width 1px
       box-shadow 0 1px 0 0 #72B9EB inset, 0 1px 2px 0 #B3B3B3
@@ -354,6 +355,8 @@ td.hovered
       text-decoration none
       text-shadow 0 -1px 1px #3275BC
       vertical-align middle
+      //filter unquote("progid:DXImageTransform.Microsoft.gradient(startColorstr='#4DA1F8',endColorstr='#307DCD');")
+
 
 .itemMenu, .itemMenuv
   float right
@@ -465,7 +468,15 @@ td.hovered
 
 #dataGrid
   display none  
+  width 100%
 
+.testg  
+  width 200px
+  height 200px
+  background-image linear-gradient(#4DA1F8,#307DCD)
+  filter unquote("progid:DXImageTransform.Microsoft.gradient(startColorstr='#4DA1F8',endColorstr='#307DCD');")
+  //filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#4DA1F8',endColorstr='#307DCD')
+  //background #3399cc
 
 @media screen and (min-width:768px) 
   .detailScenario
@@ -497,7 +508,3 @@ td.hovered
 
   .tabs
     padding 0
- 
-
-
-

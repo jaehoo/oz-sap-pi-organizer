@@ -94,7 +94,7 @@ OZ.sapOrganizer.getBody = function (){
 
     $.ajax({
         url: 'js/data.json',
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         //data: priv.options.urlData,
@@ -122,10 +122,10 @@ OZ.sapOrganizer.getHeader = function (id){
 
     $.ajax({
         url: 'js/cols.json',
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
-        //data: priv.options.urlData,
+        data: {test:"A"},
         async: false,
         success: function (data) {
             //console.info("success");
@@ -155,7 +155,7 @@ OZ.sapOrganizer.getData = function (){
 
     $.ajax({
         url: 'js/cols.json',
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         //data: priv.options.urlData,
@@ -172,7 +172,7 @@ OZ.sapOrganizer.getData = function (){
 
     $.ajax({
         url: 'js/data.json',
-        type: 'GET',
+        type: 'POST',
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         //data: priv.options.urlData,
@@ -996,12 +996,7 @@ OZ.sapOrganizer.ligthSearh = function(event){
 
 
         //validatte
-
-        
-        var str = inputBox.val();
-        var patt = new RegExp("[\s\r\n\t\f ]+");
-        var res = patt.test(str);
-        console.info("regex:"+res);
+        OZ.sapOrganizer.validateSpaces();
 
         showResulSet();
 
@@ -1182,3 +1177,40 @@ OZ.sapOrganizer.selDetBox = function(o){
 
 }
 
+
+OZ.sapOrganizer.ligthingSearch = function(){
+
+    var text= document.getElementById('magic_box');
+
+    console.info("search:"+text.value);
+
+    var data = OZ.sapOrganizer.getBody();    
+
+
+
+
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            console.info(key + " -> " + data[key]);
+        }
+    }
+
+
+}
+
+
+var patt= new RegExp("\\s+");
+var text= document.getElementById('magic_box');    
+
+OZ.sapOrganizer.validateSpaces = function(e){
+
+    console.info("val:"+text.value);
+
+        if(patt.test(text.value)){
+
+            text.value="";
+            console.info("You're a cheater!:");
+            e.preventDefault();
+            
+        }
+}

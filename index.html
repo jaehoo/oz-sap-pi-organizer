@@ -86,8 +86,6 @@
         </header>
 
 
-
-
         <div class="boxHolder">
 
  
@@ -108,8 +106,9 @@
 
                     <!-- <li><a href="#">C</a></li>-->
                     <!--<li><a id="example-fade" href="#" original-title="Hello World">Hover over me</a></li> -->
-                    <li><a id="graph_pi"class="ico-share" original-title="Show Interface Chart"></a></li>
-                    <li><a id="op_fast_search" href="#" class="ico-lightning"></a></li>
+                    <li><a id="graph_pi"class="ico-share" original-title="Show Chart"></a></li>
+                    <li><a id ="showCharts" class="ico-charts" original-title="Show Stats"></a></li>
+                    <li><a id="op_fast_search" class="ico-lightning"></a></li>
                     <li><a id ="showDataTable" class="ico-list2"></a></li>
                     <!-- <li><a href="#" class="icon-list"></a></li>-->
 
@@ -303,6 +302,8 @@
         mbox.val('');
         mbox.focus();
 
+
+        document.getElementById('magic_box').onpaste=function(){return false;};
     /*$('#boxIndicator').on('click', function(){
         
        if(mbox.val().length>0){
@@ -315,9 +316,11 @@
     });*/
 
     $('#graph_pi').tipsy({fade: true,gravity: $.fn.tipsy.autoNS});
+    $('#showCharts').tipsy({fade: true,gravity: $.fn.tipsy.autoNS});
     
 
-    var btnShowDataTable = document.getElementById("showDataTable");
+    //var btnShowDataTable = document.getElementById("showDataTable");
+    var btnShowDataTable = $("#showDataTable");
         
 
     var testAlrt= function showDataTable(){
@@ -328,18 +331,21 @@
 
         if (el.is(":hidden")) {
                 //document.querySelector('#box').classList.add('wrap');
-            btnShowDataTable.classList.add(rClass); 
+            //btnShowDataTable.classList.add(rClass); 
+            //btnShowDataTable.className +=" "+rClass;  
+            btnShowDataTable.addClass(rClass);
             el.fadeThenSlideToggle();
 
         }
         else{
-            btnShowDataTable.classList.remove(rClass); 
+            //btnShowDataTable.classList.remove(rClass); 
+            btnShowDataTable.removeClass(rClass);
             el.fadeThenSlideToggle();
         }
 
     };
 
-    btnShowDataTable.onclick = testAlrt;
+    btnShowDataTable.on('click', testAlrt);
 
     
 
