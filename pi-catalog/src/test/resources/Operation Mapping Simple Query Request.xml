@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalQueryRequest>
+    <types xmlns="">
+        <type id="MAPPING"/>
+    </types>
+    <qc xmlns="" qcType="S" delMode="N" useSyncT="true" clCtxOnly="false">
+        <clCxt consider="L"/>
+        <swcListDef def="W"/>
+    </qc>
+    <condition xmlns="">
+        <complex/>
+    </condition>
+    <result xmlns="">
+        <attrib>CATEGORY</attrib>
+        <attrib>RA_XILINK</attrib>
+        <attrib>MULTIPLICITY</attrib>
+        <attrib>NAME</attrib>
+        <attrib>NAMESPACE</attrib>
+        <attrib>OBJECTID</attrib>
+        <attrib>RA_LINK_LIST</attrib>
+        <attrib>RA_LINK_POSITION</attrib>
+        <attrib>RA_LINK_TARGET_OID</attrib>
+        <attrib>RA_LINK_TARGET_REFERENCE</attrib>
+        <attrib>RA_LINK_TARGET_TYPE</attrib>
+    </result>
+</generalQueryRequest>
